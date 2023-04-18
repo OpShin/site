@@ -1,5 +1,5 @@
 ---
-title: A modern smart contract platform for Cardano
+title: A pythonic smart contract toolchain for Cardano
 ---
 
 import Image from 'next/image';
@@ -201,11 +201,12 @@ export function icon(name, color) {
     text-decoration: none;
     transition: opacity 0.3s;
   }
+  header > nav > a > p > svg {
+    filter: invert(100);
+    display: inline-block;
+  }
   header > nav > a:hover {
     opacity: 0.7;
-  }
-  header > nav > a:first-child {
-    cursor: not-allowed;
   }
   header > nav > a + a {
     margin-left: 1rem;
@@ -551,22 +552,27 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
 
 <header id="landing">
   <Image src={theCodeOfLife} alt="Credit: © Hurcastock! - https://www.hurcastock.com" loading="eager" />
-  <h1>A modern smart contract platform for Cardano</h1>
+  <h1>A pythonic smart contract toolchain for Cardano</h1>
   <nav>
-    <a href="#" disabled="true">Playground (coming soon)</a><a href="/installation-instructions">❯_ Get started</a>
+      <a href="https://demeter.run/code?repository=https://github.com/opshin/opshin-starter-kit.git&template=python&source=demeter&key=opshin-starter-kit">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25px"><title>monitor-shimmer</title><path d="M21 16H3V4H21M21 2H3C1.89 2 1 2.89 1 4V16C1 17.11 1.9 18 3 18H10V20H8V22H16V20H14V18H21C22.11 18 23 17.11 23 16V4C23 2.89 22.1 2 21 2M15 5.5L14.38 6.87L13 7.5L14.38 8.13L15 9.5L15.63 8.13L17 7.5L15.63 6.87L15 5.5M10.5 7.5L9.41 9.91L7 11L9.41 12.09L10.5 14.5L11.6 12.09L14 11L11.6 9.91L10.5 7.5" /></svg>
+          Code in <b>Cardano Workspace</b>
+      </a>
+      <a href="https://book.opshin.dev/getting_started.html">
+          ❯_ Get started
+      </a>
   </nav>
 </header>
 
 <main>
   <article>
     <div>
-      <h2>A pure functional programming language</h2>
+      <h2>A pythonic programming language</h2>
       <ul>
-        <li>Small and easy to learn</li>
+        <li>100% valid Python 3</li>
         <li>Strong static typing with inference</li>
-        <li>First-class functions, everything is an expression</li>
-        <li>Custom types, recursion, modules, generics...</li>
-        <li>Modules, imports and package manager</li>
+        <li>Custom types, recursion, imports...</li>
+        <li>Unittests, property based tests, formal verification...</li>
       </ul>
     </div>
     <div class="window" data-title="hello_world.ak">
@@ -576,13 +582,13 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
 
   <article>
     <div>
-      <h2>A modern development environment</h2>
+      <h2>Leverage the Python ecosystem!</h2>
       <ul>
         <li>Zero configuration, one single capable tool</li>
         <li>Quick and friendly feedback with helpful error diagnotics</li>
-        <li>Language-Server Protocol (LSP) with auto-formatting</li>
-        <li>Easy-to-produce and beautiful libraries documentation</li>
-        <li>Editors integration (VSCode + NeoVim)</li>
+        <li>Supported by basically every IDE</li>
+        <li>Syntax Highlighting, linting, static analysis...</li>
+        <li>Deeply integrated with PyCardano for transaction building</li>
       </ul>
     </div>
     <div class="terminal">
@@ -594,11 +600,10 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
     <div>
       <h2>A toolkit for working with Plutus</h2>
       <ul>
-        <li>Baked-in unit test framework</li>
-        <li>Optimized for on-chain execution</li>
-        <li>Full-blown Plutus interpreter & disassembler</li>
-        <li>Execution cost evaluation with trace reporting</li>
-        <li>Low-level scripts arguments injection</li>
+        <li>Produce highly efficient code</li>
+        <li>Optimize code for size and efficiency</li>
+        <li>Disassemble and parameterize code</li>
+        <li>Interacts with python off-chain toolchains natively</li>
       </ul>
     </div>
     <div class="terminal">
@@ -610,19 +615,18 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
     <div>
       <h2>A truly open source ecosystem</h2>
       <ul>
-        <li>Written in Rust, licensed under <i>Apache-2.0</i></li>
-        <li>Open contribution process with clear guidelines</li>
-        <li>20+ contributors from the Cardano community</li>
+        <li>Written in Python3, licensed under <i>MIT License</i></li>
         <li>Fully documented with end-to-end examples</li>
-        <li>Initiated by <a href="https://txpipe.io">TxPipe</a>, Nurtured by the <a href="https://cardanofoundation.org/">Cardano Foundation</a></li>
+        <li>Full example can be run in <a href="https://github.com/OpShin/opshin-starter-kit">your browser</a></li>
+        <li>Following along the <a href="https://github.com/OpShin/opshin-pioneer-program">Plutus Pioneer Program</a></li>
       </ul>
     </div>
     <div id="socials">
 
       <LightDarkIframe
         src={{
-          dark: "https://cardanosolutions.github.io/github-buttons/github-btn.html?user=aiken-lang&repo=aiken&type=star&count=true&size=large&title=aiken-lang%2Faiken&background=%23111111",
-          light: "https://cardanosolutions.github.io/github-buttons/github-btn.html?user=aiken-lang&repo=aiken&type=star&count=true&size=large&title=aiken-lang%2Faiken&background=%23FFFFFF",
+          dark: "https://cardanosolutions.github.io/github-buttons/github-btn.html?user=OpShin&repo=opshin&type=star&count=true&size=large&title=OpShin%2Fopshin&background=%23111111",
+          light: "https://cardanosolutions.github.io/github-buttons/github-btn.html?user=OpShin&repo=opshin&type=star&count=true&size=large&title=OpShin%2Fopshin&background=%23FFFFFF",
         }}
         frameborder="0"
         scrolling="0"
@@ -632,7 +636,7 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
       ></LightDarkIframe>
 
       <div id="discord-button">
-        <a href="https://discord.gg/Vc3x8N9nz2" target="_blank">
+        <a href="https://discord.com/invite/umR3A2g4uw" target="_blank">
           <div class="icon">
             <svg class="shake" id="icon-discord" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 240">
               <path class="st0" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z" />
