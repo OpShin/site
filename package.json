@@ -4,7 +4,7 @@
   "description": "OpShin Landing",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export",
+    "build": "next build && next export && touch out/.nojekyll",
     "start": "next start",
     "deploy": "gh-pages -d out -t true"
   },
