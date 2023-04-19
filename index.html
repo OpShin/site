@@ -1,0 +1,514 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><title>OpShin | A pythonic smart contract toolchain for Cardano</title><meta name="robots" content="index,follow"/><meta name="description" content="A pythonic smart contract toolchain for Cardano"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:site" content="https://opshin.dev"/><meta name="twitter:creator" content="@OpShinDev"/><meta property="og:title" content="OpShin | A pythonic smart contract toolchain for Cardano"/><meta property="og:description" content="A pythonic smart contract toolchain for Cardano"/><meta property="og:url" content="https://opshin.dev/"/><meta property="og:image" content="https://aiken-lang.org/open-graph.png"/><meta property="og:image:alt" content="OpShin - A pythonic smart contract toolchain for Cardano"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="800"/><meta property="og:image:height" content="418"/><link rel="canonical" href="https://opshin.dev/"/><meta name="theme-color" content="#111" media="(prefers-color-scheme: dark)"/><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/><style>
+        :root {
+          --nextra-primary-hue: 212deg;
+          --nextra-navbar-height: 4rem;
+          --nextra-menu-height: 3.75rem;
+          --nextra-banner-height: 2.5rem;
+        }
+        
+        .dark {
+          --nextra-primary-hue: 204deg;
+        }
+      </style><link rel="icon" type="image/svg+xml" sizes="any" href="/icon.png"/><meta name="next-head-count" content="20"/><link rel="preload" href="/_next/static/css/e73ec87daa5345b3.css" as="style"/><link rel="stylesheet" href="/_next/static/css/e73ec87daa5345b3.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-38cee4c0e358b1a3.js" defer=""></script><script src="/_next/static/chunks/framework-2c79e2a64abdb08b.js" defer=""></script><script src="/_next/static/chunks/main-51e5f56e88e60bf9.js" defer=""></script><script src="/_next/static/chunks/pages/_app-aea6920bd27938ca.js" defer=""></script><script src="/_next/static/chunks/513-6600d42f587544e0.js" defer=""></script><script src="/_next/static/chunks/pages/index-9b4e99397c8e56de.js" defer=""></script><script src="/_next/static/eQmhglDEB5ZzUjh9GCmlz/_buildManifest.js" defer=""></script><script src="/_next/static/eQmhglDEB5ZzUjh9GCmlz/_ssgManifest.js" defer=""></script><style id="__jsx-111148e9a1b1c3f">footer.jsx-111148e9a1b1c3f{background:#0067b4;color:#fff;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-moz-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin:0 auto;padding:2rem 12.5vw}footer.jsx-111148e9a1b1c3f aside.jsx-111148e9a1b1c3f{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;font-variant:small-caps;font-size:.75em}footer.jsx-111148e9a1b1c3f aside.jsx-111148e9a1b1c3f p.jsx-111148e9a1b1c3f{padding:0 .15rem}footer.jsx-111148e9a1b1c3f aside.jsx-111148e9a1b1c3f img.jsx-111148e9a1b1c3f{width:4rem;height:auto}@media(max-width:1e3px){footer.jsx-111148e9a1b1c3f{padding:2rem 5%}}@media(max-width:600px){footer.jsx-111148e9a1b1c3f{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}footer.jsx-111148e9a1b1c3f aside.jsx-111148e9a1b1c3f+nav.jsx-111148e9a1b1c3f,footer.jsx-111148e9a1b1c3f nav.jsx-111148e9a1b1c3f+nav.jsx-111148e9a1b1c3f{margin-top:1rem}}footer.jsx-111148e9a1b1c3f nav.jsx-111148e9a1b1c3f{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}footer.jsx-111148e9a1b1c3f nav.jsx-111148e9a1b1c3f h2.jsx-111148e9a1b1c3f{font-weight:bold;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;margin-bottom:.35rem}footer.jsx-111148e9a1b1c3f nav.jsx-111148e9a1b1c3f h2.jsx-111148e9a1b1c3f>svg.jsx-111148e9a1b1c3f{width:1em;height:auto;margin-right:.5rem}footer.jsx-111148e9a1b1c3f nav.jsx-111148e9a1b1c3f ul.jsx-111148e9a1b1c3f{font-size:.9em}</style></head><body><div id="__next"><script>!function(){try{var d=document.documentElement,c=d.classList;c.remove('light','dark');var e=localStorage.getItem('theme');if('system'===e||(!e&&true)){var t='(prefers-color-scheme: dark)',m=window.matchMedia(t);if(m.media!==t||m.matches){d.style.colorScheme = 'dark';c.add('dark')}else{d.style.colorScheme = 'light';c.add('light')}}else if(e){c.add(e|| '')}if(e==='light'||e==='dark')d.style.colorScheme=e}catch(e){}}()</script><div dir="ltr"><script>document.documentElement.setAttribute('dir','ltr')</script><div class="nextra-nav-container nx-sticky nx-top-0 nx-z-20 nx-w-full nx-bg-transparent print:nx-hidden"><div class="nextra-nav-container-blur nx-pointer-events-none nx-absolute nx-z-[-1] nx-h-full nx-w-full nx-bg-white dark:nx-bg-dark nx-shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] dark:nx-shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] contrast-more:nx-shadow-[0_0_0_1px_#000] contrast-more:dark:nx-shadow-[0_0_0_1px_#fff]"></div><nav class="nx-mx-auto nx-flex nx-h-[var(--nextra-navbar-height)] nx-max-w-[90rem] nx-items-center nx-justify-end nx-gap-2 nx-pl-[max(env(safe-area-inset-left),1.5rem)] nx-pr-[max(env(safe-area-inset-right),1.5rem)]"><a class="nx-flex nx-items-center hover:nx-opacity-75 ltr:nx-mr-auto rtl:nx-ml-auto" href="/"><img style="height:var(--nextra-navbar-height)" src="/logo-light.png"/></a><a class="nx-text-sm contrast-more:nx-text-gray-700 contrast-more:dark:nx-text-gray-100 nx-relative -nx-ml-2 nx-hidden nx-whitespace-nowrap nx-p-2 md:nx-inline-block nx-text-gray-600 hover:nx-text-gray-800 dark:nx-text-gray-400 dark:hover:nx-text-gray-200" aria-current="false" href="https://book.opshin.dev"><span class="nx-absolute nx-inset-x-0 nx-text-center">Documentation</span><span class="nx-invisible nx-font-medium">Documentation</span></a><div class="nextra-search nx-relative md:nx-w-64 nx-hidden md:nx-inline-block mx-min-w-[200px]"><div class="nx-relative nx-flex nx-items-center nx-text-gray-900 contrast-more:nx-text-gray-800 dark:nx-text-gray-300 contrast-more:dark:nx-text-gray-300"><input spellcheck="false" class="nx-block nx-w-full nx-appearance-none nx-rounded-lg nx-px-3 nx-py-2 nx-transition-colors nx-text-base nx-leading-tight md:nx-text-sm nx-bg-black/[.05] dark:nx-bg-gray-50/10 focus:nx-bg-white dark:focus:nx-bg-dark placeholder:nx-text-gray-500 dark:placeholder:nx-text-gray-400 contrast-more:nx-border contrast-more:nx-border-current" type="search" placeholder="Search documentation…" value=""/></div></div><a href="https://github.com/opshin" target="_blank" rel="noreferrer" class="nx-p-2 nx-text-current"><svg width="24" height="24" fill="currentColor" viewBox="3 3 18 18"><title>GitHub</title><path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path></svg><span class="nx-sr-only">GitHub</span><span class="nx-sr-only"> (opens in a new tab)</span></a><a href="https://discord.com/invite/umR3A2g4uw" target="_blank" rel="noreferrer" class="nx-p-2 nx-text-current"><svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 30.67 23.25"><title>Discord</title><path d="M26.0015 6.9529C24.0021 6.03845 21.8787 5.37198 19.6623 5C19.3833 5.48048 19.0733 6.13144 18.8563 6.64292C16.4989 6.30193 14.1585 6.30193 11.8336 6.64292C11.6166 6.13144 11.2911 5.48048 11.0276 5C8.79575 5.37198 6.67235 6.03845 4.6869 6.9529C0.672601 12.8736 -0.41235 18.6548 0.130124 24.3585C2.79599 26.2959 5.36889 27.4739 7.89682 28.2489C8.51679 27.4119 9.07477 26.5129 9.55525 25.5675C8.64079 25.2265 7.77283 24.808 6.93587 24.312C7.15286 24.1571 7.36986 23.9866 7.57135 23.8161C12.6241 26.1255 18.0969 26.1255 23.0876 23.8161C23.3046 23.9866 23.5061 24.1571 23.7231 24.312C22.8861 24.808 22.0182 25.2265 21.1037 25.5675C21.5842 26.5129 22.1422 27.4119 22.7621 28.2489C25.2885 27.4739 27.8769 26.2959 30.5288 24.3585C31.1952 17.7559 29.4733 12.0212 26.0015 6.9529ZM10.2527 20.8402C8.73376 20.8402 7.49382 19.4608 7.49382 17.7714C7.49382 16.082 8.70276 14.7025 10.2527 14.7025C11.7871 14.7025 13.0425 16.082 13.0115 17.7714C13.0115 19.4608 11.7871 20.8402 10.2527 20.8402ZM20.4373 20.8402C18.9183 20.8402 17.6768 19.4608 17.6768 17.7714C17.6768 16.082 18.8873 14.7025 20.4373 14.7025C21.9717 14.7025 23.2271 16.082 23.1961 17.7714C23.1961 19.4608 21.9872 20.8402 20.4373 20.8402Z"></path></svg><span class="nx-sr-only">Discord</span><span class="nx-sr-only"> (opens in a new tab)</span></a><button type="button" aria-label="Menu" class="nextra-hamburger -nx-mr-2 nx-rounded nx-p-2 active:nx-bg-gray-400/20 md:nx-hidden"><svg fill="none" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" class=""><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16"></path></g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16"></path><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16"></path></g></svg></button></nav></div><div class="nx-mx-auto nx-flex"><div class="motion-reduce:nx-transition-none [transition:background-color_1.5s_ease] nx-bg-transparent"></div><aside class="nextra-sidebar-container nx-flex nx-flex-col md:nx-top-16 md:nx-shrink-0 motion-reduce:nx-transform-none nx-transform-gpu nx-transition-all nx-ease-in-out print:nx-hidden md:nx-w-64 md:nx-hidden max-md:[transform:translate3d(0,-100%,0)]"><div class="nx-px-4 nx-pt-4 md:nx-hidden"><div class="nextra-search nx-relative md:nx-w-64"><div class="nx-relative nx-flex nx-items-center nx-text-gray-900 contrast-more:nx-text-gray-800 dark:nx-text-gray-300 contrast-more:dark:nx-text-gray-300"><input spellcheck="false" class="nx-block nx-w-full nx-appearance-none nx-rounded-lg nx-px-3 nx-py-2 nx-transition-colors nx-text-base nx-leading-tight md:nx-text-sm nx-bg-black/[.05] dark:nx-bg-gray-50/10 focus:nx-bg-white dark:focus:nx-bg-dark placeholder:nx-text-gray-500 dark:placeholder:nx-text-gray-400 contrast-more:nx-border contrast-more:nx-border-current" type="search" placeholder="Search documentation…" value=""/></div></div></div><div class="nx-overflow-y-auto nx-overflow-x-hidden nx-p-4 nx-grow md:nx-h-[calc(100vh-var(--nextra-navbar-height)-var(--nextra-menu-height))] nextra-scrollbar"><ul class="nx-flex nx-flex-col nx-gap-1 md:nx-hidden"><li class="nx-flex nx-flex-col nx-gap-1"><a class="nx-flex nx-rounded nx-px-2 nx-py-1.5 nx-text-sm nx-transition-colors [word-break:break-word] nx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:nx-border nx-text-gray-500 hover:nx-bg-gray-100 hover:nx-text-gray-900 dark:nx-text-neutral-500 dark:hover:nx-bg-primary-100/5 dark:hover:nx-text-gray-50 contrast-more:nx-text-gray-900 contrast-more:dark:nx-text-gray-50 contrast-more:nx-border-transparent contrast-more:hover:nx-border-gray-900 contrast-more:dark:hover:nx-border-gray-50" href="https://book.opshin.dev">Documentation</a></li></ul></div><div class="nx-sticky nx-bottom-0 nx-bg-white dark:nx-bg-dark nx-mx-4 nx-py-4 nx-shadow-[0_-12px_16px_#fff] nx-flex nx-items-center nx-gap-2 dark:nx-border-neutral-800 dark:nx-shadow-[0_-12px_16px_#111] contrast-more:nx-border-neutral-400 contrast-more:nx-shadow-none contrast-more:dark:nx-shadow-none nx-justify-end nx-border-t" data-toggle-animation="off"><button title="Change language" class="nx-h-7 nx-rounded-md nx-px-2 nx-text-left nx-text-xs nx-font-medium nx-text-gray-600 nx-transition-colors dark:nx-text-gray-400 hover:nx-bg-gray-100 hover:nx-text-gray-900 dark:hover:nx-bg-primary-100/5 dark:hover:nx-text-gray-50 nx-grow" id="headlessui-listbox-button-:Rjsr6:" type="button" aria-haspopup="listbox" aria-expanded="false" data-headlessui-state=""><span class="nx-flex nx-items-center nx-gap-2"><svg viewBox="2 2 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd"></path></svg><span class=""></span></span></button><div class=""><button title="Change theme" class="nx-h-7 nx-rounded-md nx-px-2 nx-text-left nx-text-xs nx-font-medium nx-text-gray-600 nx-transition-colors dark:nx-text-gray-400 hover:nx-bg-gray-100 hover:nx-text-gray-900 dark:hover:nx-bg-primary-100/5 dark:hover:nx-text-gray-50" id="headlessui-listbox-button-:Rlsr6:" type="button" aria-haspopup="listbox" aria-expanded="false" data-headlessui-state=""><div class="nx-flex nx-items-center nx-gap-2 nx-capitalize"><svg fill="none" viewBox="3 3 18 18" width="12" height="12" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg><span class="md:nx-hidden">light</span></div></button></div></div></aside><div id="reach-skip-nav"></div><div class="nx-w-full nx-overflow-x-hidden nx-break-words"><style>
+  @font-face {
+    font-family: &#x27;Handel Slab&#x27;;
+    font-style: normal;
+    font-weight: normal;
+    src: local(&#x27;Handel Slab&#x27;), url(&#x27;/fonts/HandelSlab.woff&#x27;) format(&#x27;woff&#x27;);
+  }
+  :root {
+    --color-window-bg: #060928;
+    --color-hr: #292929;
+    --color-border: #0067b4;
+    --color-link: #fa953b;
+    --color-text: #f2f2f2;
+    --color-border-text: #f2f2f2;
+    --font-title: &#x27;Handel Slab&#x27;;
+  }
+  html.light {
+    --color-window-bg: #060928;
+    --color-hr: #ededed;
+    --color-border: #0067b4;
+    --color-link: #fa953b;
+    --color-text: #000000;
+    --color-border-text: #f2f2f2;
+  }
+  section a, section a:visited,
+  main a, main a:visited {
+    color: var(--color-link);
+  }
+  details &gt; summary {
+    cursor: pointer;
+  }
+  details &gt; summary:hover {
+    color: var(--color-link);
+  }
+  details summary::-webkit-details-marker,
+  details summary::marker {
+    display: none;
+    content: &#x27;&#x27;;
+  }
+  details summary &gt; h3 {
+    display: inline;
+    margin: 0;
+  }
+  details summary &gt; h3::before {
+    display: inline-block;
+    content: &#x27;&#x27;;
+    width: 20px;
+    height: 20px;
+    margin: 0 0.5rem -0.25rem 0;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-image: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23f2f2f2%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-chevron-right%22%3E%3Cpolyline%20points%3D%229%2018%2015%2012%209%206%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E&quot;);
+    transition: transform .15s;
+  }
+  html.light details summary &gt; h3::before {
+    background-image: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-chevron-right%22%3E%3Cpolyline%20points%3D%229%2018%2015%2012%209%206%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E&quot;);
+  }
+  details[open] summary &gt; h3::before {
+    transform: rotate(90deg);
+  }
+  details + details {
+    margin-top: 1rem;
+  }
+  details &gt; p {
+    padding: 1rem;
+  }
+  section ul,
+  main ul {
+    padding: 1rem;
+    list-style: none;
+  }
+  section ul &gt; li::before,
+  main ul &gt; li::before {
+    content: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fa953b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-check-circle%22%3E%3Cpath%20d%3D%22M22%2011.08V12a10%2010%200%201%201-5.93-9.14%22%3E%3C%2Fpath%3E%3Cpolyline%20points%3D%2222%204%2012%2014.01%209%2011.01%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E&quot;);
+    padding-right: 0.5rem;
+    vertical-align: middle;
+  }
+  section ul &gt; li.todo::before,
+  main ul &gt; li.todo::before {
+    content: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fa953b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-circle%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%3E%3C%2Fcircle%3E%3C%2Fsvg%3E&quot;);
+  }
+  li.icon-grid::before         { content: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fa953b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-grid%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%227%22%20height%3D%227%22%3E%3C%2Frect%3E%3Crect%20x%3D%2214%22%20y%3D%223%22%20width%3D%227%22%20height%3D%227%22%3E%3C%2Frect%3E%3Crect%20x%3D%2214%22%20y%3D%2214%22%20width%3D%227%22%20height%3D%227%22%3E%3C%2Frect%3E%3Crect%20x%3D%223%22%20y%3D%2214%22%20width%3D%227%22%20height%3D%227%22%3E%3C%2Frect%3E%3C%2Fsvg%3E&quot;); }
+  li.icon-fast-forward::before { content: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fa953b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-fast-forward%22%3E%3Cpolygon%20points%3D%2213%2019%2022%2012%2013%205%2013%2019%22%3E%3C%2Fpolygon%3E%3Cpolygon%20points%3D%222%2019%2011%2012%202%205%202%2019%22%3E%3C%2Fpolygon%3E%3C%2Fsvg%3E&quot;); }
+  li.icon-coffee::before       { content: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fa953b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-coffee%22%3E%3Cpath%20d%3D%22M18%208h1a4%204%200%200%201%200%208h-1%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M2%208h16v9a4%204%200%200%201-4%204H6a4%204%200%200%201-4-4V8z%22%3E%3C%2Fpath%3E%3Cline%20x1%3D%226%22%20y1%3D%221%22%20x2%3D%226%22%20y2%3D%224%22%3E%3C%2Fline%3E%3Cline%20x1%3D%2210%22%20y1%3D%221%22%20x2%3D%2210%22%20y2%3D%224%22%3E%3C%2Fline%3E%3Cline%20x1%3D%2214%22%20y1%3D%221%22%20x2%3D%2214%22%20y2%3D%224%22%3E%3C%2Fline%3E%3C%2Fsvg%3E&quot;); }
+  li.icon-heart::before        { content: url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fa953b%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20class%3D%22feather%20feather-heart%22%3E%3Cpath%20d%3D%22M20.84%204.61a5.5%205.5%200%200%200-7.78%200L12%205.67l-1.06-1.06a5.5%205.5%200%200%200-7.78%207.78l1.06%201.06L12%2021.23l7.78-7.78%201.06-1.06a5.5%205.5%200%200%200%200-7.78z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E&quot;); }
+  section ul &gt; li + li,
+  main ul &gt; li + li {
+    margin-top: 1rem;
+  }
+  @media(max-width: 700px) {
+    section ul,
+    main ul {
+      padding-left: 1rem;
+    }
+  }
+  header#landing {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-image: url(&#x27;/_next/static/media/catch_my_fall.59b3ee92.jpg&#x27;);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  header#landing h1 {
+    background: rgba(17,17,17,0.8);
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-title);
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 1.75em;
+    margin: -5rem 1rem 0 1rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    text-align: center;
+  }
+  html.light header#landing h1 {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  html.light header#landing h1 {
+    color: var(--color-border);
+  }
+  header &gt; nav {
+    display: flex;
+    margin: 1rem auto;
+    justify-content: space-around;
+    padding: 0 1rem;
+  }
+  header &gt; nav &gt; a,
+  header &gt; nav &gt; a:visited {
+    background: var(--color-border);
+    color: var(--color-border-text);
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  header &gt; nav &gt; a &gt; p &gt; svg {
+    filter: invert(100);
+    display: inline-block;
+  }
+  header &gt; nav &gt; a:hover {
+    opacity: 0.7;
+  }
+  header &gt; nav &gt; a + a {
+    margin-left: 1rem;
+  }
+  @media(orientation: portrait) {
+    header#landing img {
+      max-height: none;
+      height: auto;
+      max-width: 100vw;
+    }
+  }
+  @media(max-width: 900px) {
+    header#landing h1 {
+      margin-top: -4rem;
+      font-size: 1.5em;
+    }
+    header &gt; nav {
+      margin: 1rem auto;
+    }
+  }
+  @media(max-width: 750px) {
+    header#landing h1 {
+      font-size: 1.25em;
+    }
+  }
+  @media(max-width: 500px) {
+    header &gt; nav &gt; a,
+    header &gt; nav &gt; a:visited {
+      padding: 0.75rem 1rem;
+    }
+  }
+  @media(max-width: 440px) {
+    header &gt; nav &gt; a,
+    header &gt; nav &gt; a:visited {
+      font-size: 0.8em;
+    }
+  }
+  main {
+    max-width: 75vw;
+    display: flex;
+    margin: 5rem auto;
+    flex-direction: column;
+  }
+  main article + article {
+    margin-top: 5rem;
+  }
+  main article {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  main article h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  main article div.window,
+  main article div.terminal {
+    background: var(--color-window-bg);
+    border-radius: 0.5rem;
+    box-shadow: 7px 7px 0px 1px var(--color-border);
+    padding-top: 2rem;
+    position: relative;
+    width: 55%;
+  }
+  main article &gt; div#socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+  }
+  main article &gt; div#socials &gt; * + * {
+    margin-top: 1rem;
+  }
+  main article pre {
+    margin: 0;
+    padding: 0;
+  }
+  main article div.window &gt; pre,
+  main article div.terminal &gt; pre.hljs {
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+  main article pre.hljs {
+    display:block;
+    border-radius: 0.5rem;
+    overflow-x:auto;
+  }
+  main article pre {
+    padding: 1rem;
+    line-height: 1.2em;
+  }
+  main article div.window::before {
+    content: attr(data-title);
+    font-size: 0.85rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    opacity: 0.8;
+    color: var(--color-border-text);
+  }
+  main article div.terminal::before {
+    content: &#x27;● ● ●&#x27;;
+    font-size: 0.85rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    color: transparent;
+    background: -webkit-linear-gradient(left, #e74c3c, #e74c3c 33%, #f1c40f 33%, #f1c40f 66%, #2ecc71 66%, #2ecc71);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  @media(max-width: 1000px) {
+    main {
+      max-width: 100vw;
+      padding: 0 2rem;
+      margin: 3rem auto;
+    }
+  }
+  @media(max-width: 700px) {
+    main {
+      max-width: 100vw;
+      padding: 0 1rem;
+    }
+    main article {
+      flex-direction: column;
+    }
+    main article h2 {
+      font-size: 1.25em;
+    }
+    main article &gt; div + div {
+      margin-top: 1rem;
+    }
+    main article &gt; div.window,
+    main article &gt; div.terminal,
+    main article &gt; div#socials {
+      width: 100%;
+      box-shadow: none;
+    }
+    main article + article {
+      margin-top: 3rem;
+    }
+  }
+  section#roadmap {
+    background-color: #0067b4;
+    color: var(--color-border-text);
+    display: flex;
+    flex-direction: column;
+    padding: 45vw 0 2rem 32vw;
+  }
+  section#roadmap h2,
+  section#faq h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  @media(max-width: 700px) {
+    section#roadmap h2,
+    section#faq h2 {
+      font-size: 1.25em;
+    }
+  }
+  section#roadmap h3 {
+    margin-bottom: 0.5rem;
+  }
+  section#roadmap &gt; div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  section#roadmap article {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  section#roadmap article &gt; h3::after {
+    border-top: 1px solid var(--color-border-text);
+    content: &#x27;&#x27;;
+    display: block;
+    margin-left: 5em;
+    margin-top: -0.75rem;
+    position: relative;
+    width: 100%;
+    width: calc(100% - 2rem - 5em);
+  }
+  @media(max-width: 900px) {
+    section#roadmap {
+      padding: 47.5vw 2rem 2rem 2rem;
+    }
+    section#roadmap h2 {
+      padding-left: 30vw;
+      margin-bottom: 2.5rem;
+    }
+    section#roadmap article {
+      margin-top: 2rem;
+    }
+  }
+  @media(max-width: 700px) {
+    section#roadmap h2 {
+      margin: 0;
+    }
+    section#roadmap &gt; div {
+      grid-template-columns: 1fr;
+    }
+  }
+  section#faq {
+    max-width: 75vw;
+    display: flex;
+    margin: 2rem auto;
+    flex-direction: column;
+  }
+  @media(max-width: 1000px) {
+    section#faq {
+      max-width: 100vw;
+      padding: 0 2rem;
+    }
+  }
+  @media(max-width: 700px) {
+    section#faq {
+      padding: 0 1rem;
+    }
+  }
+  #discord-button .icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+  }
+  #discord-button svg {
+    fill: white;
+  }
+  #discord-button a {
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #7289da;
+    text-decoration: none;
+  }
+  #discord-button a:hover {
+    background-color: #6a7fc9;
+  }
+  .fadein1 {
+    opacity: 0;
+    animation: 10s infinite normal fadein1;
+  }
+  @keyframes fadein1 {
+      0% {opacity: 0;}
+     10% {opacity: 0;}
+     20% {opacity: 1;}
+     99% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+  .fadein2 {
+    opacity: 0;
+    animation: 10s infinite normal fadein2;
+  }
+  @keyframes fadein2 {
+      0% {opacity: 0;}
+     20% {opacity: 0;}
+     25% {opacity: 1;}
+     99% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+  .fadein3 {
+    opacity: 0;
+    animation: 10s infinite normal fadein3;
+  }
+  @keyframes fadein3 {
+      0% {opacity: 0;}
+     25% {opacity: 0;}
+     30% {opacity: 1;}
+     99% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+  @keyframes jump-shake {
+    0% { transform: translateX(0) }
+    5% { transform: translateY(-9px) }
+    7% { transform: translateY(-9px) rotate(17deg) }
+    11% { transform: translateY(-9px) rotate(-17deg) }
+    13% { transform: translateY(-9px) rotate(17deg) }
+    15% { transform: translateY(-9px) rotate(-17deg) }
+    20% { transform: translateY(0) rotate(0) }
+    20.5% { transform: translateX(0) }
+    100% { transform: translateX(0) }
+  }
+  .shake {
+    animation: 4s infinite normal jump-shake;
+  }
+</style>
+<!-- -->
+<!-- -->
+<!-- -->
+<link rel="stylesheet" href="/css/highlightjs-theme.css"/>
+<header id="landing"><h1 style="margin-top:500px">Build without limits</h1><nav><a href="https://demeter.run/code?repository=https://github.com/opshin/opshin-starter-kit.git&amp;template=python&amp;source=demeter&amp;key=opshin-starter-kit"><p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25px"><title>monitor-shimmer</title><path d="M21 16H3V4H21M21 2H3C1.89 2 1 2.89 1 4V16C1 17.11 1.9 18 3 18H10V20H8V22H16V20H14V18H21C22.11 18 23 17.11 23 16V4C23 2.89 22.1 2 21 2M15 5.5L14.38 6.87L13 7.5L14.38 8.13L15 9.5L15.63 8.13L17 7.5L15.63 6.87L15 5.5M10.5 7.5L9.41 9.91L7 11L9.41 12.09L10.5 14.5L11.6 12.09L14 11L11.6 9.91L10.5 7.5"></path></svg>
+Code in <b>Cardano Workspace</b></p></a><a href="https://book.opshin.dev/getting_started.html"><p>❯_ Get started</p></a></nav></header>
+<main><article><div><h2>A pythonic programming language</h2><ul><li>100% valid Python 3</li><li>Strong static typing with inference</li><li>Custom types, recursion, imports...</li><li>Unittests, property based tests, formal verification...</li></ul></div><div class="window" data-title="gift.py"><pre class="hljs"><span class="hljs-keyword">from</span> opshin.prelude <span class="hljs-keyword">import</span> *
+
+<span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">WithdrawDatum</span>(<span class="hljs-title class_ inherited__">PlutusData</span>):
+    pubkeyhash: <span class="hljs-built_in">bytes</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">validator</span>(<span class="hljs-params">datum: WithdrawDatum, redeemer: <span class="hljs-literal">None</span>, context: ScriptContext</span>) -&gt; <span class="hljs-literal">None</span>:
+    sig_present = datum.pubkeyhash <span class="hljs-keyword">in</span> context.tx_info.signatories
+    <span class="hljs-keyword">assert</span> sig_present, <span class="hljs-string">&quot;Required signature missing&quot;</span></pre></div></article><article><div><h2>Leverage the Python ecosystem!</h2><ul><li>Zero configuration, one single capable tool</li><li>Quick and friendly feedback with helpful error diagnotics</li><li>Supported by basically every IDE</li><li>Syntax Highlighting, linting, static analysis...</li><li>Deeply integrated with <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a> for transaction building</li></ul></div><div class="terminal"><pre class="hljs">$ opshin build gift.py
+Traceback (most recent call last):
+  File <span class="hljs-string">&quot;./venv/bin/opshin&quot;</span>, line 6, <span class="hljs-keyword">in</span> &lt;module&gt;
+    sys.exit(main())
+  File <span class="hljs-string">&quot;./opshin/__main__.py&quot;</span>, line 138, <span class="hljs-keyword">in</span> main
+    raise SyntaxError(
+  File <span class="hljs-string">&quot;gift.py&quot;</span>, line 8
+    sig_present = datum <span class="hljs-keyword">in</span> context.tx_info.signatories
+                 ^
+NotImplementedError: Comparison In <span class="hljs-keyword">for</span> RecordType and ListType is not implemented. This is likely intended because it would always evaluate to False.
+Note that opshin errors may be overly restrictive as they aim to prevent code with unintended consequences.</pre></div></article><article><div><h2>A toolkit for working with Plutus</h2><ul><li>Produce highly efficient code</li><li>Optimize code for size and efficiency</li><li>Disassemble and parameterize code</li><li>Interacts with python off-chain toolchains natively</li></ul></div><div class="terminal"><pre class="hljs">$ python3 -m pytest
+========================================================================================================================== <span class="hljs-built_in">test</span> session starts ===========================================================================================================================
+platform linux -- Python 3.10.6, pytest-7.2.2, pluggy-1.0.0
+rootdir: ./opshin-pioneer-program
+plugins: typeguard-2.13.3, hypothesis-6.70.2
+collected 107 items                                                                                                                                                                                                                                                      
+
+src/week02/tests/test_homework.py ...F.FF.....                                                                                                                                                                                                                     [ 11%]
+src/week02/tests/test_lecture.py .....                                                                                                                                                                                                                             [ 15%]
+src/week03/tests/test_homework.py ....FFF.F.......FFFFFFFFF...                                                                                                                                                                                                     [ 42%]
+src/week03/tests/test_lecture.py ..                                                                                                                                                                                                                                [ 43%]
+src/week04/tests/test_homework.py ..........................                                                                                                                                                                                                       [ 68%]
+src/week05/tests/test_homework.py ....FFF.F....F.F...F...F.......                                                                                                                                                                                                  [ 97%]
+src/week05/tests/test_lecture.py ...         </pre></div></article><article><div><h2>A truly open source ecosystem</h2><ul><li>Written in Python3, licensed under <i>MIT License</i></li><li>Fully documented with end-to-end examples</li><li>Full example can be run in <a href="https://github.com/OpShin/opshin-starter-kit">your browser</a></li><li>Following along the <a href="https://github.com/OpShin/opshin-pioneer-program">Plutus Pioneer Program</a></li></ul></div><div id="socials"><iframe frameborder="0" scrolling="0" width="255" height="30" title="GitHub"></iframe><div id="discord-button"><a href="https://discord.com/invite/umR3A2g4uw" target="_blank"><div class="icon"><svg class="shake" id="icon-discord" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 240"><path class="st0" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"></path><path class="st0" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"></path></svg></div><span>Join the Discord</span></a></div></div></article></main>
+<section id="faq"><h2>FAQ</h2><details open=""><summary><h3>What is OpShin?</h3></summary><p><p>OpShin is a new <strong>programming language and toolchain for developing
+smart contracts</strong> on the <a href="https://cardano.org/" target="_blank">Cardano</a> blockchain. It is focusing on accessability and
+developer experience.</p><br/><p>OpShin is 100% valid Python 3. In this way it can seamlessly integrate
+with off-chain tools built in Python such as <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a>.
+It can also leverage the existing testing frameworks and IDEs
+and allows developers to re-use knowledge or focus on attaining
+knowledge about a simple and general purpose language.</p></p></details><details><summary><h3>Why build another smart contract platform?</h3></summary><p><p>Haskell is hard and almost no developer is used to it.
+On the other hand, Python is praised for its simplicity and
+used in almost 25% of all projects on the internet (compare that to roughly 0.65% for Haskell).
+So the ecosystem for Python is huge and full of interesting tools
+that leverage the developer experience.
+The platform based on python can leverage these tools
+to provide a safe and enjoyable developer experience.</p></p></details><details><summary><h3>I thought Cardano smart contracts had to be written in Haskell?</h3></summary><p><p>This is a common misconception. The current Cardano node implementation
+does indeed happen to be written in Haskell. The virtual machine for
+executing smart contracts that comes baked into the node is also
+implemented in Haskell. But that does not mean that it is Haskell which
+is executed by the smart contract virtual machine.</p><br/><p>The virtual machine is a language interpreter which executes a
+smart contract language called <i>&#x27;Untyped Plutus Core&#x27;</i> (abbrev.
+<code>UPLC</code>) often referred to simply as <i>&#x27;Plutus&#x27;</i>.</p><br/><p>Yet UPLC isn&#x27;t something developers are expected to write by hand.
+Instead, it is a compilation target (like WebAssembly for the world wide
+web). Oddly enough, until recently, the only established framework that
+produced UPLC from a high-level syntax was called <i>&#x27;Plutus-Tx&#x27;</i> and
+happened to be a Haskell framework.</p><br/><p>OpShin changes the game by introducing a new framework that compiles
+straight to UPLC.</p></p></details><details><summary><h3>Can I write off-chain/backend code with OpShin?</h3></summary><p><p>No, but you can use the off-chain library <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a>
+with which OpShin is closely integrated!</p></p></details><details><summary><h3>Is Python the right language for smart contracts? It&#x27;s not even type safe right?</h3></summary><p><p>We chose Python because it is simple and intuitive.
+This is a great basis to improve security of contracts -
+if they are easy to read and understand, a larger group of people can interpret them.</p><p>To combat the problems that come with dynamically typed languages,
+OpShin enforces a strict type system on top of Python, similar to the Haskell type system.
+Hence, you enjoy the simplicy of Python programming and the safety of properly typed code.</p></p></details></section></div></div><footer class="jsx-111148e9a1b1c3f"><aside class="jsx-111148e9a1b1c3f"><img src="/typo.webp" class="jsx-111148e9a1b1c3f"/><p class="jsx-111148e9a1b1c3f">Build without limits</p></aside><nav class="jsx-111148e9a1b1c3f"><h2 class="jsx-111148e9a1b1c3f"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="jsx-111148e9a1b1c3f"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" class="jsx-111148e9a1b1c3f"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" class="jsx-111148e9a1b1c3f"></path></svg> Quick Links</h2><ul class="jsx-111148e9a1b1c3f"><li class="jsx-111148e9a1b1c3f"><a href="https://github.com/OpShin/opshin-starter-kit" class="jsx-111148e9a1b1c3f">Starter Kit</a></li><li class="jsx-111148e9a1b1c3f"><a href="https://github.com/OpShin/opshin-pioneer-program" class="jsx-111148e9a1b1c3f">Pioneer Program</a></li><li class="jsx-111148e9a1b1c3f"><a href="https://opshin.opshin.dev/opshin/" class="jsx-111148e9a1b1c3f">Docs</a></li></ul></nav><nav class="jsx-111148e9a1b1c3f"><h2 class="jsx-111148e9a1b1c3f"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="jsx-111148e9a1b1c3f"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" class="jsx-111148e9a1b1c3f"></path></svg>Community</h2><ul class="jsx-111148e9a1b1c3f"><li class="jsx-111148e9a1b1c3f"><a href="https://discord.com/invite/umR3A2g4uw" class="jsx-111148e9a1b1c3f">Discord</a></li><li class="jsx-111148e9a1b1c3f"><a href="https://twitter.com/OpShinDev" class="jsx-111148e9a1b1c3f">Twitter</a></li><li class="jsx-111148e9a1b1c3f"><a href="https://github.com/OpShin" class="jsx-111148e9a1b1c3f">GitHub</a></li><li class="jsx-111148e9a1b1c3f"><a href="https://patreon.com/OpShin" class="jsx-111148e9a1b1c3f">Patreon</a></li></ul></nav><nav class="jsx-111148e9a1b1c3f"><h2 class="jsx-111148e9a1b1c3f"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="jsx-111148e9a1b1c3f"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" class="jsx-111148e9a1b1c3f"></path><circle cx="9" cy="7" r="4" class="jsx-111148e9a1b1c3f"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87" class="jsx-111148e9a1b1c3f"></path><path d="M16 3.13a4 4 0 0 1 0 7.75" class="jsx-111148e9a1b1c3f"></path></svg>Partners</h2><ul class="jsx-111148e9a1b1c3f"><li class="jsx-111148e9a1b1c3f"><a href="https://emurgo.io/" class="jsx-111148e9a1b1c3f">Emurgo</a></li><li class="jsx-111148e9a1b1c3f"><a href="https://inversion.dev" class="jsx-111148e9a1b1c3f">Inversion.Dev</a></li><li class="jsx-111148e9a1b1c3f"><a href="https://muesliswap.com" class="jsx-111148e9a1b1c3f">MuesliSwap</a></li></ul></nav></footer></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/","query":{},"buildId":"eQmhglDEB5ZzUjh9GCmlz","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}</script></body></html>
