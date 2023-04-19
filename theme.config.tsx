@@ -15,7 +15,7 @@ const config: DocsThemeConfig = {
           src={
             resolvedTheme === "light"
               ? "/logo-dark.png"
-              : "/logo-light.png"
+              : "/logo.png"
           }
         />
       </>

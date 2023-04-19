@@ -4,7 +4,7 @@ title: A pythonic smart contract toolchain for Cardano
 
 import Image from 'next/image';
 import { LightDarkIframe } from '../components/light-dark-iframe';
-import theCodeOfLife from '../../public/catch_my_fall.jpg';
+import theCodeOfLife from '../../public/dark_night.png';
 
 export const palette = {
   dark: {
@@ -185,10 +185,12 @@ export function icon(name, color) {
     text-align: center;
   }
   html.light header#landing h1 {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0);
   }
   html.light header#landing h1 {
-    color: var(--color-border);
+    // color: var(--color-border);
+    color: white;
+    border: none;
   }
   header > nav {
     display: flex;
@@ -564,8 +566,8 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
       <ul>
         <li>100% valid Python 3</li>
         <li>Strong static typing with inference</li>
-        <li>Custom types, recursion, imports...</li>
-        <li>Unittests, property based tests, formal verification...</li>
+        <li>Intuitive coding, the way you are used to</li>
+        <li>Loops, custom types, recursion, imports...</li>
       </ul>
     </div>
     <div class="window" data-title="gift.py">
@@ -575,13 +577,12 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
 
   <article>
     <div>
-      <h2>Leverage the Python ecosystem!</h2>
+      <h2>Focused on accessability</h2>
       <ul>
-        <li>Zero configuration, one single capable tool</li>
         <li>Quick and friendly feedback with helpful error diagnotics</li>
         <li>Supported by basically every IDE</li>
-        <li>Syntax Highlighting, linting, static analysis...</li>
-        <li>Deeply integrated with <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a> for transaction building</li>
+        <li>Produce highly efficient code</li>
+        <li>Interacts with python off-chain toolchains natively</li>
       </ul>
     </div>
     <div class="terminal">
@@ -591,12 +592,12 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
 
   <article>
     <div>
-      <h2>A toolkit for working with Plutus</h2>
+      <h2>Leverage the Python ecosystem!</h2>
       <ul>
-        <li>Produce highly efficient code</li>
-        <li>Optimize code for size and efficiency</li>
-        <li>Disassemble and parameterize code</li>
-        <li>Interacts with python off-chain toolchains natively</li>
+        <li>Zero configuration, one single capable tool</li>
+        <li>Unittests, property based tests, formal verification...</li>
+        <li>Syntax Highlighting, linting, static analysis...</li>
+        <li>Deeply integrated with <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a> for transaction building</li>
       </ul>
     </div>
     <div class="terminal">
@@ -606,12 +607,11 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
 
   <article>
     <div>
-      <h2>A truly open source ecosystem</h2>
+      <h2>Get started quickly</h2>
       <ul>
-        <li>Written in Python3, licensed under <i>MIT License</i></li>
-        <li>Fully documented with end-to-end examples</li>
         <li>Full example can be run in <a href="https://github.com/OpShin/opshin-starter-kit">your browser</a></li>
-        <li>Following along the <a href="https://github.com/OpShin/opshin-pioneer-program">Plutus Pioneer Program</a></li>
+        <li>Follow along the <a href="https://github.com/OpShin/opshin-pioneer-program">Plutus Pioneer Program</a></li>
+        <li>Open and friendly developer community</li>
       </ul>
     </div>
     <div id="socials">
@@ -631,7 +631,7 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
       <div id="discord-button">
         <a href="https://discord.com/invite/umR3A2g4uw" target="_blank">
           <div class="icon">
-            <svg class="shake" id="icon-discord" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 240">
+            <svg id="icon-discord" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 240">
               <path class="st0" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z" />
               <path class="st0" d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z" />
             </svg>
@@ -645,9 +645,8 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
 
 
 <section id="faq">
-  <h2>FAQ</h2>
 
-  <details open>
+  <details>
     <summary><h3>What is OpShin?</h3></summary>
     <p>
       OpShin is a new <strong>programming language and toolchain for developing
@@ -664,15 +663,29 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
   </details>
 
   <details>
-    <summary><h3>Why build another smart contract platform?</h3></summary>
+    <summary><h3>Why build another smart contract language?</h3></summary>
     <p>
       Haskell is hard and almost no developer is used to it.
       On the other hand, Python is praised for its simplicity and
       used in almost 25% of all projects on the internet (compare that to roughly 0.65% for Haskell).
       So the ecosystem for Python is huge and full of interesting tools
       that leverage the developer experience.
-      The platform based on python can leverage these tools
+      <br/>
+      The toolchain based on python can leverage these tools
       to provide a safe and enjoyable developer experience.
+    </p>
+  </details>
+
+  <details>
+    <summary><h3>Is Python the right language for smart contracts? It's not even type safe right?</h3></summary>
+    <p>
+      We chose Python because it is simple and intuitive.
+      This is a great basis to improve security of contracts -
+      if they are easy to read and understand, a larger group of people can interpret them.
+      <br/>
+      To combat the problems that come with dynamically typed languages,
+      OpShin enforces a strict type system on top of Python, similar to the Haskell type system.
+      Hence, you enjoy the simplicy of Python programming and the safety of properly typed code.
     </p>
   </details>
 
@@ -703,21 +716,15 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
   <details>
     <summary><h3>Can I write off-chain/backend code with OpShin?</h3></summary>
     <p>
-      No, but you can use the off-chain library <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a>
+      No, but you can use the off-chain library <a href="https://pycardano.readthedocs.io/en/latest/guides/plutus.html">PyCardano</a>
       with which OpShin is closely integrated!
+      <br/>
+      In PyCardano, you can natively import and handle the functions and classes you defined for your contract - 
+      this lets you build off-chain code that matches the contract frictionless.
+      <br/>
+      The <a href="https://github.com/OpShin/opshin-starter-kit">OpShin Starter Kit</a> provides a practical example
+      on how to use PyCardano and OpShin in symbiosis.
     </p>
   </details>
 
-  <details>
-    <summary><h3>Is Python the right language for smart contracts? It's not even type safe right?</h3></summary>
-    <p>
-      We chose Python because it is simple and intuitive.
-      This is a great basis to improve security of contracts -
-      if they are easy to read and understand, a larger group of people can interpret them.
-
-      To combat the problems that come with dynamically typed languages,
-      OpShin enforces a strict type system on top of Python, similar to the Haskell type system.
-      Hence, you enjoy the simplicy of Python programming and the safety of properly typed code.
-    </p>
-  </details>
 </section>
