@@ -29,7 +29,7 @@ const config: DocsThemeConfig = {
     </>
   ),
   project: {
-    link: "https://github.com/opshin/opshin",
+    link: "https://github.com/opshin",
   },
   chat: {
     link: "https://discord.com/invite/umR3A2g4uw",

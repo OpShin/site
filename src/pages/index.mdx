@@ -503,7 +503,7 @@ export function icon(name, color) {
 `}</style>
 
 export const hljs = require('highlight.js');
-export const aikenCodeExample = hljs.highlightAuto(`from opshin.prelude import *
+export const aikenCodeExample = hljs.highlight(`from opshin.prelude import *
 
 @dataclass
 class WithdrawDatum(PlutusData):
@@ -511,26 +511,27 @@ class WithdrawDatum(PlutusData):
 
 def validator(datum: WithdrawDatum, redeemer: None, context: ScriptContext) -> None:
     sig_present = datum.pubkeyhash in context.tx_info.signatories
-    assert sig_present, "Required signature missing"`).value;
+    assert sig_present, "Required signature missing"`, {language: "python"}).value;
 
 
-export const aikenErrorExample = `$opshin build examples/smart_contracts/gift.py
+export const aikenErrorExample = hljs.highlight(`$ opshin build gift.py
 Traceback (most recent call last):
-  File "/home/niels/git/eopsin-lang/venv/bin/opshin", line 6, in <module>
+  File "./venv/bin/opshin", line 6, in <module>
     sys.exit(main())
-  File "/home/niels/git/eopsin-lang/opshin/__main__.py", line 138, in main
+  File "./opshin/__main__.py", line 138, in main
     raise SyntaxError(
-  File "examples/smart_contracts/gift.py", line 8
+  File "gift.py", line 8
     sig_present = datum in context.tx_info.signatories
                  ^
 NotImplementedError: Comparison In for RecordType and ListType is not implemented. This is likely intended because it would always evaluate to False.
-Note that opshin errors may be overly restrictive as they aim to prevent code with unintended consequences.`;
+Note that opshin errors may be overly restrictive as they aim to prevent code with unintended consequences.`,
+{language: "bash"}).value;
 
 
-export const aikenTestResultExample = `$python3 -m pytest
+export const aikenTestResultExample = hljs.highlight(`$ python3 -m pytest
 ========================================================================================================================== test session starts ===========================================================================================================================
 platform linux -- Python 3.10.6, pytest-7.2.2, pluggy-1.0.0
-rootdir: /home/niels/git/opshin-pioneer-program
+rootdir: ./opshin-pioneer-program
 plugins: typeguard-2.13.3, hypothesis-6.70.2
 collected 107 items                                                                                                                                                                                                                                                      
 
@@ -540,9 +541,10 @@ src/week03/tests/test_homework.py ....FFF.F.......FFFFFFFFF...                  
 src/week03/tests/test_lecture.py ..                                                                                                                                                                                                                                [ 43%]
 src/week04/tests/test_homework.py ..........................                                                                                                                                                                                                       [ 68%]
 src/week05/tests/test_homework.py ....FFF.F....F.F...F...F.......                                                                                                                                                                                                  [ 97%]
-src/week05/tests/test_lecture.py ...         `;
+src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
 
 
+<link rel="stylesheet" href="/css/highlightjs-theme.css"/>
 <header id="landing">
   <h1 style={{marginTop:"500px"}}>Build without limits</h1>
   <nav>
