@@ -1,6 +1,6 @@
 {
   "index": {
-    "title": "Aiken",
+    "title": "OpShin",
     "type": "page",
     "display": "hidden",
     "theme": {
@@ -10,39 +10,8 @@
   "user-manual": {
     "title": "Documentation",
     "type": "page",
-    "href": "/installation-instructions"
+    "href": "https://book.opshin.dev"
   },
-  "about": {
-    "title": "About",
-    "type": "page",
-    "href": "/credits"
-  },
-  "-- Basics --": {
-    "type": "separator",
-    "title": "Basics"
-  },
-  "installation-instructions": "Installation",
-  "fundamentals": "Fundamentals",
-  "language-tour": "Language Tour",
-  "-- Examples --": {
-    "type": "separator",
-    "title": "Examples"
-  },
-  "example--hello-world": "Hello, World!",
-  "example--vesting": "Vesting",
-  "example--gift-card": "Gift Card",
-  "-- Advanced --": {
-    "type": "separator",
-    "title": "Advanced"
-  },
-  "uplc": "Untyped Plutus Core",
-  "-- Appendix --": {
-    "type": "separator",
-    "title": "Appendix"
-  },
-  "ecosystem-overview": "Ecosystem Overview",
-  "what-i-wish-i-knew": "What I Wish I Knew",
-  "resources": "Resources",
   "credits": {
     "title": "About",
     "display": "hidden",

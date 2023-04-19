@@ -14,8 +14,8 @@ const config: DocsThemeConfig = {
           style={{ height: "var(--nextra-navbar-height)" }}
           src={
             resolvedTheme === "light"
-              ? "https://raw.githubusercontent.com/aiken-lang/branding/main/assets/logo-dark.png"
-              : "https://raw.githubusercontent.com/aiken-lang/branding/main/assets/logo-light.png"
+              ? "/logo-dark.png"
+              : "/logo-light.png"
           }
         />
       </>
@@ -24,16 +24,15 @@ const config: DocsThemeConfig = {
   head: (
     <>
         <link rel="icon" type="image/svg+xml" sizes="any" href="/icon.png"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@700&display=swap" />
         <meta name="twitter:image" content="https://aiken-lang.org/open-graph.png" />
         <meta name="twitter:site:domain" content="aiken-lang.org" />
     </>
   ),
   project: {
-    link: "https://github.com/aiken-lang/aiken",
+    link: "https://github.com/opshin/opshin",
   },
   chat: {
-    link: "https://discord.gg/Vc3x8N9nz2",
+    link: "https://discord.com/invite/umR3A2g4uw",
   },
   toc: {
     extraContent: <></>,
@@ -44,31 +43,31 @@ const config: DocsThemeConfig = {
       text: "English",
     },
   ],
-  docsRepositoryBase: "https://github.com/aiken-lang/site/blob/main",
+  docsRepositoryBase: "https://github.com/opshin/site/blob/main",
   useNextSeoProps() {
     const { title } = useConfig();
-    const description = "A modern smart contract platform for Cardano";
+    const description = "A pythonic smart contract toolchain for Cardano";
     return {
-      titleTemplate: "Aiken | %s",
+      titleTemplate: "OpShin | %s",
       description,
-      canonical: "https://aiken-lang.org/",
+      canonical: "https://opshin.dev/",
       openGraph: {
-        url: "https://aiken-lang.org/",
+        url: "https://opshin.dev/",
         description,
         images: [
           {
             url: "https://aiken-lang.org/open-graph.png",
             width: 800,
             height: 418,
-            alt: "Aiken - A modern smart contract platform for Cardano",
+            alt: "OpShin - A pythonic smart contract toolchain for Cardano",
             type: "image/png",
           },
         ],
       },
-      siteName: "Aiken",
+      siteName: "OpShin",
       twitter: {
-        handle: "@aiken_eng",
-        site: "https://aiken-lang.org",
+        handle: "@OpShinDev",
+        site: "https://opshin.dev",
         cardType: "summary_large_image",
       },
     };
@@ -78,34 +77,37 @@ const config: DocsThemeConfig = {
       <footer>
         <aside>
           <img src="/typo.webp" />
-          <p>The modern Cardano platform</p>
+          <p>Build without limits</p>
         </aside>
         <nav>
           <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> Quick Links</h2>
           <ul>
-            <li><a href="https://aiken-lang.github.io/prelude">Prelude</a></li>
-            <li><a href="https://aiken-lang.github.io/stdlib">Standard library</a></li>
-            <li><a href="#">Playground (coming soon)</a></li>
+            <li><a href="https://github.com/OpShin/opshin-starter-kit">Starter Kit</a></li>
+            <li><a href="https://github.com/OpShin/opshin-pioneer-program">Pioneer Program</a></li>
+            <li><a href="https://opshin.opshin.dev/opshin/">Docs</a></li>
           </ul>
         </nav>
         <nav>
           <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>Community</h2>
           <ul>
-            <li><a href="https://discord.gg/Vc3x8N9nz2">Discord</a></li>
-            <li><a href="https://twitter.com/aiken_eng">Twitter</a></li>
+            <li><a href="https://discord.com/invite/umR3A2g4uw">Discord</a></li>
+            <li><a href="https://twitter.com/OpShinDev">Twitter</a></li>
+            <li><a href="https://github.com/OpShin">GitHub</a></li>
+            <li><a href="https://patreon.com/OpShin">Patreon</a></li>
           </ul>
         </nav>
         <nav>
           <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Partners</h2>
           <ul>
-            <li><a href="https://cardanofoundation.org">Cardano Foundation</a></li>
-            <li><a href="https://txpipe.io">TxPipe</a></li>
+            <li><a href="https://emurgo.io/">Emurgo</a></li>
+            <li><a href="https://inversion.dev">Inversion.Dev</a></li>
+            <li><a href="https://muesliswap.com">MuesliSwap</a></li>
           </ul>
         </nav>
       </footer>
       <style jsx>{`
         footer {
-          background: #604185;
+          background: #0067b4;
           color: #FFFFFF;
           display: flex;
           justify-content: space-between;

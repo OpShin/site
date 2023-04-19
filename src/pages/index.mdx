@@ -4,27 +4,27 @@ title: A pythonic smart contract toolchain for Cardano
 
 import Image from 'next/image';
 import { LightDarkIframe } from '../components/light-dark-iframe';
-import theCodeOfLife from '../../public/the-code-of-life.webp';
+import theCodeOfLife from '../../public/catch_my_fall.jpg';
 import theFirstContact from '../../public/the-first-contact.webp';
 
 export const palette = {
   dark: {
-    border: "#604185",
+    border: "#0067b4",
     borderText: "#f2f2f2",
-    bullet: "#f0a5e7",
-    link: "#f0a5e7",
+    bullet: "#fa953b",
+    link: "#fa953b",
     separator: "#292929",
     text: "#f2f2f2",
-    window: "#1E2127",
+    window: "#060928",
   },
   light: {
-    border: "#604185",
+    border: "#0067b4",
     borderText: "#f2f2f2",
-    bullet: "#f0a5e7",
-    link: "#f0a5e7",
+    bullet: "#fa953b",
+    link: "#fa953b",
     separator: "#ededed",
     text: "#000000",
-    window: "#1E2127",
+    window: "#060928",
   }
 };
 
@@ -66,6 +66,12 @@ export function icon(name, color) {
 }
 
 <style>{`
+  @font-face {
+    font-family: 'Handel Slab';
+    font-style: normal;
+    font-weight: normal;
+    src: local('HandelSlab'), url('/fonts/HandelSlab') format('woff');
+  }
   :root {
     --color-window-bg: ${palette.dark.window};
     --color-hr: ${palette.dark.separator};
@@ -73,7 +79,7 @@ export function icon(name, color) {
     --color-link: ${palette.dark.link};
     --color-text: ${palette.dark.text};
     --color-border-text: ${palette.dark.borderText};
-    --font-title: 'Expletus Sans', sans-serif;
+    --font-title: 'Handel Slab';
   }
   html.light {
     --color-window-bg: ${palette.light.window};
@@ -161,10 +167,9 @@ export function icon(name, color) {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-  }
-  header#landing img {
-    width: auto;
-    max-height: 80vh;
+    background-image: url('${theCodeOfLife.src}');
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
   header#landing h1 {
     background: rgba(17,17,17,0.8);
@@ -350,10 +355,7 @@ export function icon(name, color) {
     }
   }
   section#roadmap {
-    background-color: #604185;
-    background-image: url('${theFirstContact.src}');
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background-color: #0067b4;
     color: var(--color-border-text);
     display: flex;
     flex-direction: column;
@@ -551,8 +553,7 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
 <link rel="stylesheet" href="/css/highlightjs-theme.css"/>
 
 <header id="landing">
-  <Image src={theCodeOfLife} alt="Credit: © Hurcastock! - https://www.hurcastock.com" loading="eager" />
-  <h1>A pythonic smart contract toolchain for Cardano</h1>
+  <h1 style={{marginTop:"500px"}}>Build without limits</h1>
   <nav>
       <a href="https://demeter.run/code?repository=https://github.com/opshin/opshin-starter-kit.git&template=python&source=demeter&key=opshin-starter-kit">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25px"><title>monitor-shimmer</title><path d="M21 16H3V4H21M21 2H3C1.89 2 1 2.89 1 4V16C1 17.11 1.9 18 3 18H10V20H8V22H16V20H14V18H21C22.11 18 23 17.11 23 16V4C23 2.89 22.1 2 21 2M15 5.5L14.38 6.87L13 7.5L14.38 8.13L15 9.5L15.63 8.13L17 7.5L15.63 6.87L15 5.5M10.5 7.5L9.41 9.91L7 11L9.41 12.09L10.5 14.5L11.6 12.09L14 11L11.6 9.91L10.5 7.5" /></svg>
@@ -588,7 +589,7 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
         <li>Quick and friendly feedback with helpful error diagnotics</li>
         <li>Supported by basically every IDE</li>
         <li>Syntax Highlighting, linting, static analysis...</li>
-        <li>Deeply integrated with PyCardano for transaction building</li>
+        <li>Deeply integrated with <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a> for transaction building</li>
       </ul>
     </div>
     <div class="terminal">
@@ -650,107 +651,37 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
   </article>
 </main>
 
-<section id="roadmap">
-  <h2>Roadmap</h2>
-  <div>
-    <article>
-      <h3>Q3 2022</h3>
-      <ul>
-        <li>Binary flat encoding/encoding</li>
-        <li>Untyped Plutus Core (UPLC) parsing</li>
-        <li>UPLC pretty-printing</li>
-        <li>Native Plutus core interpreter</li>
-        <li>Cost and evaluation of Plutus programs</li>
-        <li>Aiken's language Proof-of-concept</li>
-      </ul>
-    </article>
-
-    <article>
-      <h3>Q4 2022</h3>
-      <ul>
-        <li>Aiken's Lexer/Parser with highlight</li>
-        <li>Type checking with beautiful errors</li>
-        <li>LSP, code formatting, editors integrations</li>
-        <li>Standard library, user manual &amp; basic tooling</li>
-        <li>Modules &amp; package management</li>
-        <li>Unit test framework</li>
-      </ul>
-    </article>
-
-    <article>
-      <h3>Q1 2023</h3>
-      <ul>
-        <li>Compiler fine-tuning &amp; optimizations</li>
-        <li>End-to-end examples on Cardano's preview network</li>
-        <li>Interoperable smart-contract blueprints ([CIP-0057](https://github.com/cardano-foundation/CIPs/pull/258))</li>
-        <li>LSP on-the-fly compilation &amp; feedback</li>
-        <li>Alpha release with first pioneers</li>
-      </ul>
-    </article>
-
-    <article>
-      <h3>Q2 2023</h3>
-      <ul>
-        <li class="todo">Code generation from blueprints into various languages</li>
-        <li class="todo">Online playground</li>
-        <li class="todo">External audit &amp; verification of the compiler</li>
-        <li class="todo">Property-based testing framework</li>
-        <li class="todo">Beta release &amp; mainnet readiness</li>
-      </ul>
-    </article>
-  </div>
-</section>
 
 <section id="faq">
   <h2>FAQ</h2>
 
   <details open>
-    <summary><h3>What is Aiken?</h3></summary>
+    <summary><h3>What is OpShin?</h3></summary>
     <p>
-      Aiken is a new <strong>programming language and toolkit for developing
+      OpShin is a new <strong>programming language and toolchain for developing
       smart contracts</strong> on the <a href="https://cardano.org/"
-      target="_blank">Cardano</a> blockchain. It is geared towards robustness
-      and developer experience.
+      target="_blank">Cardano</a> blockchain. It is focusing on accessability and
+      developer experience.
       <br/>
-      Aiken takes inspiration from many modern languages such as Gleam, Rust,
-      and Elm, which are known for friendly error messages and an overall
-      excellent developer experience. We believe Cardano deserves a dedicated
-      language with these kinds of features, developed in the open with the
-      community.
+      OpShin is 100% valid Python 3. In this way it can seamlessly integrate
+      with off-chain tools built in Python such as <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a>.
+      It can also leverage the existing testing frameworks and IDEs
+      and allows developers to re-use knowledge or focus on attaining
+      knowledge about a simple and general purpose language.
     </p>
   </details>
 
   <details>
     <summary><h3>Why build another smart contract platform?</h3></summary>
     <p>
-      We love functional programming. Yet, we couldn't help to think that the
-      current Haskell framework wasn't <i>quite right</i> in terms of developer
-      experience and felt we could do something about it. So we came up with a
-      set of shared goals we kept in mind while building Aiken:
+      Haskell is hard and almost no developer is used to it.
+      On the other hand, Python is praised for its simplicity and
+      used in almost 25% of all projects on the internet (compare that to roughly 0.65% for Haskell).
+      So the ecosystem for Python is huge and full of interesting tools
+      that leverage the developer experience.
+      The platform based on python can leverage these tools
+      to provide a safe and enjoyable developer experience.
     </p>
-    <ul>
-      <li class="icon-coffee">Writing smart contracts should be <strong>easy and
-      safe</strong>. You should be able to get started in minutes, not days,
-      and rapidly build confidence that your on-chain code is doing what is
-      intended.</li>
-
-      <li class="icon-heart">We want a complete and delightful experience. A modern
-      blockchain deserves a modern smart contract toolkit. <strong>You should
-      be and feel productive</strong> when writing contracts. This includes
-      editor integrations such as LSP and tree-sitter, beautiful error
-      messages, rapid and intuitive test feedback loop and easy-to-produce
-      documentation.</li>
-
-      <li class="icon-fast-forward">We want there to be <strong>as little configuration as
-      possible</strong>. It should work out of the box and establish reasonable
-      opinionated conventions with the community.</li>
-
-      <li class="icon-grid">We want to have a <strong>modular design</strong> such
-      that components can be picked and chosen as needed. Like the Unix
-      philosophy. Aiken is only one part of a much bigger picture;. While we
-      firmly believe it is a great tool, we want to encourage other approaches
-      and favour interoperability as much as possible. </li>
-    </ul>
   </details>
 
   <details>
@@ -772,30 +703,29 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
       produced UPLC from a high-level syntax was called <i>'Plutus-Tx'</i> and
       happened to be a Haskell framework.
       <br/>
-      Aiken changes the game by introducing a new framework that compiles
+      OpShin changes the game by introducing a new framework that compiles
       straight to UPLC.
     </p>
   </details>
 
   <details>
-    <summary><h3>Can I write off-chain/backend code with Aiken</h3></summary>
+    <summary><h3>Can I write off-chain/backend code with OpShin?</h3></summary>
     <p>
-      Our main goal is to improve the smart contract development experience
-      <strong>for the Cardano blockchain</strong>. By developing Aiken as a
-      bespoke language, we can better align its features with what is truly
-      needed for on-chain development.
-      <br/>
-      We want to keep the language simple and manageable. In a decentralized
-      architecture, smart contracts present a significant challenge where a
-      single flaw can escalate into a multi-million financial exploit. More so,
-      on-chain code typically represents a small fraction of an entire DApp
-      source code. While writing contracts should be as straightforward as possible,
-      smart contracts ought to be optimized for review, audit, and static
-      analysis.
-      <br/>
-      Hence, Aiken is <strong>not</strong> intended as a general-purpose
-      language. Rather, it focuses on Cardano and aims for a high-quality
-      toolkit for developing reliable smart contracts with confidence.
+      No, but you can use the off-chain library <a href="https://pycardano.readthedocs.io/en/latest/">PyCardano</a>
+      with which OpShin is closely integrated!
+    </p>
+  </details>
+
+  <details>
+    <summary><h3>Is Python the right language for smart contracts? It's not even type safe right?</h3></summary>
+    <p>
+      We chose Python because it is simple and intuitive.
+      This is a great basis to improve security of contracts -
+      if they are easy to read and understand, a larger group of people can interpret them.
+
+      To combat the problems that come with dynamically typed languages,
+      OpShin enforces a strict type system on top of Python, similar to the Haskell type system.
+      Hence, you enjoy the simplicy of Python programming and the safety of properly typed code.
     </p>
   </details>
 </section>
