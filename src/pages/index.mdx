@@ -502,55 +502,46 @@ export function icon(name, color) {
   }
 `}</style>
 
-export const aikenCodeExample = `<span class="hljs-keyword"><span class="hljs-keyword">validator</span></span> {
-  <span class="hljs-keyword">fn</span> <span class="hljs-function"><span class="hljs-title function_">hello_world</span></span>(datum, redeemer, context) <span class="hljs-operator">-&gt;</span> <span class="hljs-title">Bool</span> {
-    <span class="hljs-keyword"><span class="hljs-keyword">let</span></span> must_say_hello <span class="hljs-operator">=</span>
-      redeemer <span class="hljs-operator">==</span> <span class="hljs-string">"Hello, World!"</span>
+export const hljs = require('highlight.js');
+export const aikenCodeExample = hljs.highlightAuto(`from opshin.prelude import *
 
-    <span class="hljs-keyword"><span class="hljs-keyword">let</span></span> must_be_signed <span class="hljs-operator">=</span>
-      list<span class="hljs-operator">.</span><span class="hljs-title function_ invoke__">has</span><span class="hljs-ponctuation">(</span>
-        context<span class="hljs-operator">.</span>transaction<span class="hljs-operator">.</span>extra_signatories,
-        datum<span class="hljs-operator">.</span>owner,
-      )
+@dataclass
+class WithdrawDatum(PlutusData):
+    pubkeyhash: bytes
 
-    must_say_hello<span class="hljs-operator">?</span> <span class="hljs-operator">&amp;&amp;</span> must_be_signed<span class="hljs-operator">?</span>
-  }
-}`;
+def validator(datum: WithdrawDatum, redeemer: None, context: ScriptContext) -> None:
+    sig_present = datum.pubkeyhash in context.tx_info.signatories
+    assert sig_present, "Required signature missing"`).value;
 
 
-export const aikenErrorExample = `<strong>Error:</strong> <span class="hljs-error">err::aiken::check::unknown_record_field</span>
-
-<span class="hljs-error">×</span> While trying to make sense of your code...
-<span class="hljs-error">╰─▶</span> I looked for the field <span class="hljs-title function_">'extra_signatures'</span> in a record
-    of type <span class="hljs-title">'Transaction'</span> but didn't find it.
-
-   ╭─[<span class="hljs-title">examples/hello_world/validators/hello_world.ak:18:1</span>]
-<span class="hljs-line-number">18</span> │   let must_be_signed =
-<span class="hljs-line-number">19</span> │     list.has(
-<span class="hljs-line-number">20</span> │       context.transaction.extra_signatures,
-   ·       <span class="hljs-operator">────────────────────────────────────</span>
-<span class="hljs-line-number">21</span> │       datum.owner
-<span class="hljs-line-number">22</span> │     )
-   ╰─────────────────────────────────────────────────────
-
-<span class="hljs-title">help</span>: <i>Did you mean <span class="hljs-title function_">'extra_signatories'</span>?</i>`;
+export const aikenErrorExample = `$opshin build examples/smart_contracts/gift.py
+Traceback (most recent call last):
+  File "/home/niels/git/eopsin-lang/venv/bin/opshin", line 6, in <module>
+    sys.exit(main())
+  File "/home/niels/git/eopsin-lang/opshin/__main__.py", line 138, in main
+    raise SyntaxError(
+  File "examples/smart_contracts/gift.py", line 8
+    sig_present = datum in context.tx_info.signatories
+                 ^
+NotImplementedError: Comparison In for RecordType and ListType is not implemented. This is likely intended because it would always evaluate to False.
+Note that opshin errors may be overly restrictive as they aim to prevent code with unintended consequences.`;
 
 
-export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compiling</strong></span> aiken-lang/stdlib 0.0.0
-  <span class="fadein1"><span class="hljs-keyword"><strong>Testing</strong></span> ...</span>
+export const aikenTestResultExample = `$python3 -m pytest
+========================================================================================================================== test session starts ===========================================================================================================================
+platform linux -- Python 3.10.6, pytest-7.2.2, pluggy-1.0.0
+rootdir: /home/niels/git/opshin-pioneer-program
+plugins: typeguard-2.13.3, hypothesis-6.70.2
+collected 107 items                                                                                                                                                                                                                                                      
 
-<span class="fadein2">    ┍━ <span class="hljs-title"><strong>aiken/option</strong></span> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    │ <span class="hljs-string">PASS</span> [<span class="hljs-title function_">mem:</span>   5099, <span class="hljs-title function_">cpu:</span>   1884852] <span class="hljs-title">or_else_1</span>
-    │ <span class="hljs-string">PASS</span> [<span class="hljs-title function_">mem:</span>   5963, <span class="hljs-title function_">cpu:</span>   3091855] <span class="hljs-title">map_1</span>
-    │ <span class="hljs-string">PASS</span> [<span class="hljs-title function_">mem:</span>  11985, <span class="hljs-title function_">cpu:</span>   5076974] <span class="hljs-title">map_2</span>
-    │ <span class="hljs-string">PASS</span> [<span class="hljs-title function_">mem:</span>   6863, <span class="hljs-title function_">cpu:</span>   3298855] <span class="hljs-title">and_then_1</span>
-    │ <span class="hljs-string">PASS</span> [<span class="hljs-title function_">mem:</span>  14187, <span class="hljs-title function_">cpu:</span>   5872937] <span class="hljs-title">and_then_2</span>
-    │ <span class="hljs-string">PASS</span> [<span class="hljs-title function_">mem:</span>  11657, <span class="hljs-title function_">cpu:</span>   4918544] <span class="hljs-title">and_then_3</span>
-    ┕━━━━━━━━━━━━━━ <strong>13 tests</strong> | <span class="hljs-string"><strong>13 passed</strong></span> | <span class="hljs-error"><strong>0 failed</strong></span></span>
+src/week02/tests/test_homework.py ...F.FF.....                                                                                                                                                                                                                     [ 11%]
+src/week02/tests/test_lecture.py .....                                                                                                                                                                                                                             [ 15%]
+src/week03/tests/test_homework.py ....FFF.F.......FFFFFFFFF...                                                                                                                                                                                                     [ 42%]
+src/week03/tests/test_lecture.py ..                                                                                                                                                                                                                                [ 43%]
+src/week04/tests/test_homework.py ..........................                                                                                                                                                                                                       [ 68%]
+src/week05/tests/test_homework.py ....FFF.F....F.F...F...F.......                                                                                                                                                                                                  [ 97%]
+src/week05/tests/test_lecture.py ...         `;
 
-  <span class="fadein3"><span class="hljs-keyword"><strong>Summary</strong></span> 0 error, 0 warning(s)</span>`;
-
-<link rel="stylesheet" href="/css/highlightjs-theme.css"/>
 
 <header id="landing">
   <h1 style={{marginTop:"500px"}}>Build without limits</h1>
@@ -576,7 +567,7 @@ export const aikenTestResultExample = `<span class="hljs-keyword"><strong>Compil
         <li>Unittests, property based tests, formal verification...</li>
       </ul>
     </div>
-    <div class="window" data-title="hello_world.ak">
+    <div class="window" data-title="gift.py">
       <pre class="hljs" dangerouslySetInnerHTML={{ __html: aikenCodeExample }}></pre>
     </div>
   </article>

@@ -1,7 +1,7 @@
 {
-  "name": "aiken-site",
+  "name": "opshin-site",
   "version": "0.0.1",
-  "description": "Aiken Documentation",
+  "description": "OpShin Landing",
   "scripts": {
     "dev": "next",
     "build": "next build && next export",
@@ -9,10 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aiken-lang/site.git"
+    "url": "git+https://github.com/OpShin/site.git"
   },
   "license": "Apache 2.0",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "highlight.js": "^11.7.0",
     "next": "^13.1.1",
     "next-themes": "^0.2.1",
     "nextra": "^2.2.1",
