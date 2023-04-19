@@ -24,8 +24,6 @@ const config: DocsThemeConfig = {
   head: (
     <>
         <link rel="icon" type="image/svg+xml" sizes="any" href="/icon.png"/>
-        <meta name="twitter:image" content="https://aiken-lang.org/open-graph.png" />
-        <meta name="twitter:site:domain" content="aiken-lang.org" />
     </>
   ),
   project: {
