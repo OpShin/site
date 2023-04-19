@@ -46,7 +46,7 @@ const config: DocsThemeConfig = {
   docsRepositoryBase: "https://github.com/opshin/site/blob/main",
   useNextSeoProps() {
     const { title } = useConfig();
-    const description = "A pythonic smart contract toolchain for Cardano";
+    const description = "Cardano Smart Contracts in Python";
     return {
       titleTemplate: "OpShin | %s",
       description,
@@ -59,7 +59,7 @@ const config: DocsThemeConfig = {
             url: "https://opshin.dev/open-graph.jpg",
             width: 800,
             height: 418,
-            alt: "OpShin - A pythonic smart contract toolchain for Cardano",
+            alt: "OpShin - Cardano Smart Contracts in Python",
             type: "image/jpg",
           },
         ],
