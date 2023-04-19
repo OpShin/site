@@ -4,7 +4,7 @@
   "description": "OpShin Landing",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export && touch out/.nojekyll",
+    "build": "next build && next export && touch out/.nojekyll && echo opshin.dev > out/CNAME",
     "start": "next start",
     "deploy": "gh-pages -d out -t true"
   },
