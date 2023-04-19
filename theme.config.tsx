@@ -24,6 +24,8 @@ const config: DocsThemeConfig = {
   head: (
     <>
         <link rel="icon" type="image/svg+xml" sizes="any" href="/icon.png"/>
+        <meta name="twitter:image" content="https://opshin.dev/open-graph.jpg" />
+        <meta name="twitter:site:domain" content="opshin.dev" />
     </>
   ),
   project: {
@@ -54,11 +56,11 @@ const config: DocsThemeConfig = {
         description,
         images: [
           {
-            url: "https://aiken-lang.org/open-graph.png",
+            url: "https://opshin.dev/open-graph.jpg",
             width: 800,
             height: 418,
             alt: "OpShin - A pythonic smart contract toolchain for Cardano",
-            type: "image/png",
+            type: "image/jpg",
           },
         ],
       },
