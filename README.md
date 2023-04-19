@@ -1,8 +1,7 @@
-# Aiken Documentation
+# OpShin Landing page
 
 This is a website powered by [nextra](https://nextra.site/).
-It contains all of [Aiken's](https://github.com/aiken-lang/aiken) docs
-and is available at [https://aiken-lang.org](https://aiken-lang.org).
+It contains the OpShin landing page.
 
 ## Dev
 
