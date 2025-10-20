@@ -510,9 +510,10 @@ export const aikenCodeExample = hljs.highlight(`from opshin.prelude import *
 class WithdrawDatum(PlutusData):
     pubkeyhash: bytes
 
-def validator(datum: WithdrawDatum, redeemer: None, context: ScriptContext) -> None:
+def validator(context: ScriptContext) -> None:
+    datum: WithdrawDatum = own_datum_unsafe(context)
     sig_present = False
-    for s in context.tx_info.signatories:
+    for s in context.transaction.signatories:
         if datum.pubkeyhash == s:
             sig_present = True
     assert sig_present, "Required signature missing"`, {language: "python"}).value;
@@ -525,9 +526,9 @@ Traceback (most recent call last):
   File "./opshin/__main__.py", line 138, in main
     raise SyntaxError(
   File "gift.py", line 8
-    sig_present = datum in context.tx_info.signatories
+    sig_present = datum in context.transaction.signatories
                  ^
-NotImplementedError: Comparison In for RecordType and ListType is not implemented. This is likely intended because it would always evaluate to False.
+NotImplementedError: Comparison In for WithdrawDatum and List[bytes] is not implemented. This is likely intended because it would always evaluate to False.
 Note that opshin errors may be overly restrictive as they aim to prevent code with unintended consequences.`,
 {language: "bash"}).value;
 

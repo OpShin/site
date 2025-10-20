@@ -23,7 +23,7 @@ const config: DocsThemeConfig = {
   },
   head: (
     <>
-        <link rel="icon" type="image/png" sizes="any" href="https://opshin.dev/icon.png"/>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="twitter:image" content="https://opshin.dev/open-graph.jpg" />
         <meta name="twitter:site:domain" content="opshin.dev" />
     </>
