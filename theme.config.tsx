@@ -34,6 +34,13 @@ const config: DocsThemeConfig = {
   chat: {
     link: "https://discord.com/invite/umR3A2g4uw",
   },
+  search: {
+    component: null,
+    placeholder: "",
+    emptyResult: null,
+    error: "",
+    loading: null,
+  },
   toc: {
     extraContent: <></>,
   },
