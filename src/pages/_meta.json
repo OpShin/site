@@ -12,6 +12,11 @@
     "type": "page",
     "href": "https://book.opshin.dev"
   },
+  "playground": {
+    "title": "Playground",
+    "type": "page",
+    "href": "https://playground.opshin.dev"
+  },
   "credits": {
     "title": "About",
     "display": "hidden",
