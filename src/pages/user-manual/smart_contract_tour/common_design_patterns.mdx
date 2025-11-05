@@ -1,0 +1,478 @@
+import { Callout } from "nextra-theme-docs";
+
+# Common Design Patterns
+
+There are number of design patterns that have been refined and enabled as Plutus has advanced from V1 to V2,
+and now to V3. This document seeks to be a non-exhaustive reference to these design patterns and practices.
+
+## Enforcing Uniqueness
+
+Enforcing the uniqueness of policies, asset names, or new outputs is useful in a number of contexts.
+
+### "One-Shot" Minting Policies
+
+A validator is parameterized with an `OutputReference`, the minting validator
+enforces that the inputs to the transaction contain the corresponding `UTxO` as
+input. By doing this, the minting policy is ensured to only validate once and
+only once (since an unspent transaction output can only be spent once, by
+definition). In some designs, this logic is used for only a subset of redeemers
+to allow more flexible minting policies.
+
+Let's walk through an example.
+
+An NFT (Non-Fungible Token) can be created using a one-shot minting policy that
+ensures each minted value is validated by spending a specific UTxO provided
+through the transaction inputs. This minting policy uses a validator parameter
+of OutputReference to confirm that the transaction spends the UTxO.
+Additionally, the policy guarantees that only one token is minted, ensuring the
+NFT's uniqueness.
+
+First define OutputReference as parameter and set the action type to mint or
+burn the token based on the value provided in the redeemer.
+
+```python
+from dataclasses import dataclass
+from typing import Union
+
+from opshin.prelude import *
+
+
+@dataclass()
+class MintingAction(PlutusData):
+    CONSTR_ID = 0
+
+
+@dataclass()
+class BurningAction(PlutusData):
+    CONSTR_ID = 1
+
+
+Action = Union[MintingAction, BurningAction]
+
+
+def validator(utxo_ref: TxOutRef, context: ScriptContext) -> None:
+    assert isinstance(context.purpose, Minting), "Minting policy expected"
+    redeemer: Action = context.redeemer
+    # Minting and burning rules will follow after this
+    ...
+```
+
+The validator must handle minting/burning operations and ensures that only one value is minted; it will fail otherwise.
+
+```python
+from dataclasses import dataclass
+from typing import Dict, Union
+
+from opshin.prelude import *
+
+
+@dataclass()
+class MintingAction(PlutusData):
+    CONSTR_ID = 0
+
+
+@dataclass()
+class BurningAction(PlutusData):
+    CONSTR_ID = 1
+
+
+Action = Union[MintingAction, BurningAction]
+
+def validator(utxo_ref: TxOutRef, context: ScriptContext) -> None:
+    purpose = context.purpose
+    assert isinstance(purpose, Minting), "Minting policy expected"
+    redeemer: Action = context.redeemer
+    # Minting and burning rules follow after this
+
+    minted_for_policy: Dict[TokenName, int] = context.transaction.mint.get(
+        purpose.policy_id, {}
+    )
+    minted_assets = list(minted_for_policy.items())
+    assert len(minted_assets) == 1, "Mint exactly one asset for this policy"
+    _token_name, quantity = minted_assets[0]
+
+    # Checking the UTxO consumption happens in the next step.
+```
+
+To enforce uniqueness, we need to ensure that the UTxO defined as OutputReference in the validator parameters is
+consumed. This is because every OutputReference is a unique combination of the Transaction ID and an Output Index
+Integer. It's important to remember that the Transaction ID is a `Hash<Blake2b_256, Transaction>`, which is also a
+unique identifier and will not be repeated.
+
+```python
+from dataclasses import dataclass
+from typing import Dict, Union
+
+from opshin.prelude import *
+
+
+@dataclass()
+class MintingAction(PlutusData):
+    CONSTR_ID = 0
+
+
+@dataclass()
+class BurningAction(PlutusData):
+    CONSTR_ID = 1
+
+
+Action = Union[MintingAction, BurningAction]
+
+
+def validator(utxo_ref: TxOutRef, context: ScriptContext) -> None:
+    purpose = context.purpose
+    assert isinstance(purpose, Minting), "Minting policy expected"
+    redeemer: Action = context.redeemer
+    # Minting and burning rules follow after this
+
+    minted_for_policy: Dict[TokenName, int] = context.transaction.mint.get(
+        purpose.policy_id, {b"":0}
+    )
+    minted_assets = minted_for_policy.items()
+    assert len(minted_assets) == 1, "Mint exactly one asset for this policy"
+    token_name, quantity = minted_assets[0]
+
+    consumed_refs = [tx_in.out_ref for tx_in in context.transaction.inputs]
+
+    if isinstance(redeemer, MintingAction):
+        assert utxo_ref in consumed_refs, "Required UTxO was not consumed"
+        assert quantity == 1, "Mint a single token"
+    else:
+        assert quantity == -1, "Burn a single token"
+```
+
+### Receipts
+
+A validator can mint a unique receipt for a transaction by requiring that the name of the asset is any
+unique value specific to the transaction where validation is set to occur. In other words, if we enforce
+that only one receipt is to be minted per transaction, we can use `blake2b_256` and `cbor.serialise` to
+get a unique value that can be assigned to the `AssetName` expected for the receipt from the
+`OutputReference` from the first `Input` in our transactions inputs.
+
+```python
+from hashlib import blake2b
+from typing import Dict
+
+from opshin.prelude import *
+
+
+def validator(context: ScriptContext) -> None:
+    purpose = context.purpose
+    assert isinstance(purpose, Minting), "Minting policy expected"
+
+    tx_info = context.transaction
+    first_input = tx_info.inputs[0]
+
+    minted_for_policy: Dict[TokenName, int] = tx_info.mint.get(purpose.policy_id, {b"":0})
+    minted_assets = minted_for_policy.items()
+    assert len(minted_assets) == 1, "Mint exactly one receipt token"
+    asset_name, quantity = minted_assets[0]
+
+    expected_name = blake2b(
+        first_input.out_ref.to_cbor()
+    ).digest()
+
+    assert asset_name == expected_name, "Derived token name mismatch"
+    assert quantity == 1, "Receipt must mint a single token"
+```
+
+We could use this validator to mint a unique receipt for a transaction. It will get the first UTxO reference
+and will compare it with the asset name.
+
+### Unique Outputs
+
+#### Problem: Double Satisfaction
+
+To prevent a vulnerability called _'Double Satisfaction'_ (see more below), one
+must ensure that outputs associated with a given input are only counted once
+across all possible validations occuring in a transaction.
+
+In the eUTxO model, a common anti-pattern is to predicate spending upon logic
+that is specific to a given input - without ensuring the uniqueness of the
+corresponding output.
+
+Let's walk through a short example: Bob wants to sell 20 SCOIN and wants at
+least 5 ADA in return; the contract would require that at least 5 ADA is paid
+to Bob.
+
+Step-by-step swap:
+
+1. Bob sends 20 SCOIN to the validator with a datum containing his
+VerificationKeyHash and the price (5 ADA) required to get the 20 SCOIN.
+
+2. Alice makes a new transaction getting the 20 SCOIN and paying 5 ADA to Bob.
+
+3. Alice will get 20 SCOIN.
+
+4. Bob will get 5 ADA.
+
+
+```python
+from dataclasses import dataclass
+from typing import Dict, List
+
+from opshin.prelude import *
+
+
+def lovelace_of(value: Dict[PolicyId, Dict[TokenName, int]]) -> int:
+    return value.get(b"", {b"": 0}).get(b"", 0)
+
+
+@dataclass()
+class DatumSwap(PlutusData):
+    beneficiary: PubKeyHash
+    price: int
+
+
+# ! DANGER: exploitable
+def validator(context: ScriptContext) -> None:
+    purpose = context.purpose
+    assert isinstance(purpose, Spending), "Spending purpose expected"
+
+    datum: DatumSwap = own_datum_unsafe(context)
+    beneficiary_address = Address(
+        PubKeyCredential(datum.beneficiary), NoStakingCredential()
+    )
+
+    payments: List[TxOut] = [
+        tx_out
+        for tx_out in context.transaction.outputs
+        if tx_out.address == beneficiary_address
+    ]
+
+    total_paid = sum([lovelace_of(tx_out.value) for tx_out in payments])
+    assert total_paid >= datum.price, "Insufficient payment"
+```
+
+So far, everything is ok, but what if we have some UTxOs locked in the
+validator at similar prices?
+
+Bob wants to sell 20 XCOIN, and 20 SCOIN and wants at least 10 ADA in return
+for each UTxO; the contract would require that at least 10 ADA be paid to Bob.
+Now Alice comes and pays Bob 10 ADA, in the same transaction she takes both the
+20 SCOIN and 20 XCOIN because the contract only ensures that at least 10 ADA is
+paid to Bob.
+
+So, this validator could potentially cause be satisfied twice with the same
+inputs, where anyone can pay once and get every UTxO unlocked at the same price
+or less.
+
+#### Solution: Tagged Outputs
+
+What can we do? We have to ensure that each input has a corresponding unique
+output to pay or predicate the logic of spending any input of the script on all
+of the inputs and outputs relevant to the business logic of the dApp.
+
+In addition, we have to remember that the code in the validator will be
+executed for every UTxO locked by the validator that we are trying to spend
+from. So we have to make sure that outputs aren't counted multiple times across
+multiple executions of the validator (for each input validation).
+
+This can be achieved by _tagging_ outputs with a value which is unique to the
+input. Enough information is present in the `OutputReference` of the input to
+create a unique tag that must then be found in outputs.
+
+```python
+from typing import List
+
+from opshin.prelude import *
+
+def lovelace_of(value: Dict[PolicyId, Dict[TokenName, int]]) -> int:
+    return value.get(b"", {b"": 0}).get(b"", 0)
+
+
+@dataclass()
+class DatumSwap(PlutusData):
+    beneficiary: PubKeyHash
+    price: int
+
+
+def validator(context: ScriptContext) -> None:
+    purpose = context.purpose
+    assert isinstance(purpose, Spending), "Spending purpose expected"
+
+    datum: DatumSwap = own_datum_unsafe(context)
+    beneficiary_address = Address(
+        PubKeyCredential(datum.beneficiary), NoStakingCredential()
+    )
+
+    tagged_outputs: List[TxOut] = []
+    for tx_out in context.transaction.outputs:
+        if tx_out.address == beneficiary_address:
+            output_datum = tx_out.datum
+            if isinstance(output_datum, SomeOutputDatum):
+                datum_value = output_datum.datum
+                # Soft-cast: ignore unrelated outputs instead of aborting the transaction.
+                if datum_value == purpose.tx_out_ref:
+                    tagged_outputs = [tx_out] + tagged_outputs
+
+    total_paid = sum([lovelace_of(tx_out.value) for tx_out in tagged_outputs])
+    assert total_paid >= datum.price, "Tagged payment too small"
+```
+
+
+## State Thread Tokens (a.k.a STT)
+
+It is often useful to have a mutable state which either changes with each transaction, or on a periodic
+basis. One way to ensure that a datum is not 'spoofed' is to ensure that the input or reference input with
+that datum contains an NFT which has been generated to be unique using one of the method described above.
+
+In this example, we will create an STT that tracks the sum of every transaction
+that uses the STT. And for this, we will create a multivalidator with two
+responsabilities: a minting and spending policy.
+
+The STT Minting Policy allows us to create new tokens with a counter datum initialized at 0.
+
+```python
+from typing import Dict
+
+from opshin.prelude import *
+
+EMPTY_VALUE: Dict[bytes, int] = {}
+
+def validator(utxo_ref: TxOutRef, operator: PubKeyHash, context: ScriptContext) -> None:
+    purpose = context.purpose
+    tx_info = context.transaction
+
+    if isinstance(purpose, Minting):
+        minted_for_policy: Dict[TokenName, int] = tx_info.mint.get(purpose.policy_id, EMPTY_VALUE)
+        minted_assets = minted_for_policy.items()
+        assert len(minted_assets) == 1, "Mint exactly one STT token"
+        token_name, quantity = minted_assets[0]
+        assert quantity == 1, "Mint a single STT"
+
+        consumed_refs = [tx_in.out_ref for tx_in in tx_info.inputs]
+        assert utxo_ref in consumed_refs, "Authorising reference missing"
+
+        stt_outputs = [
+            tx_out
+            for tx_out in tx_info.outputs
+            if tx_out.value.get(purpose.policy_id, EMPTY_VALUE).get(token_name, 0) == 1
+        ]
+        assert len(stt_outputs) == 1, "STT must be forwarded exactly once"
+
+        datum: int = resolve_datum_unsafe(stt_outputs[0], tx_info)
+        assert datum == 0, "Initial counter must be zero"
+
+    elif isinstance(purpose, Spending):
+        # The spending branch is implemented below.
+        pass
+    else:
+        assert False, "Unsupported script purpose"
+```
+
+```python
+from typing import Dict, Optional
+
+from opshin.prelude import *
+
+
+def validator(utxo_ref: TxOutRef, operator: PubKeyHash, context: ScriptContext) -> None:
+    purpose = context.purpose
+    tx_info = context.transaction
+
+    if isinstance(purpose, Minting):
+        minted_for_policy: Dict[TokenName, int] = tx_info.mint.get(purpose.policy_id, {})
+        minted_assets = list(minted_for_policy.items())
+        assert len(minted_assets) == 1, "Mint exactly one STT token"
+        token_name, quantity = minted_assets[0]
+        assert quantity == 1, "Mint a single STT"
+
+        consumed_refs = [tx_in.out_ref for tx_in in tx_info.inputs]
+        assert utxo_ref in consumed_refs, "Authorising reference missing"
+
+        stt_outputs = [
+            tx_out
+            for tx_out in tx_info.outputs
+            if tx_out.value.get(purpose.policy_id, {}).get(token_name, 0) == 1
+        ]
+        assert len(stt_outputs) == 1, "STT must be forwarded exactly once"
+
+        datum = resolve_datum_unsafe(stt_outputs[0], tx_info)
+        assert isinstance(datum, int), "Counter datum must be an integer"
+        assert datum == 0, "Initial counter must be zero"
+        return
+
+    assert isinstance(purpose, Spending), "Supported purposes are minting and spending only"
+
+    own_utxo = own_spent_utxo(tx_info.inputs, purpose)
+    own_policy = own_policy_id(own_utxo)
+    assert operator in tx_info.signatories, "Operator signature missing"
+
+    stt_input: Optional[TxInInfo] = None
+    for tx_in in tx_info.inputs:
+        quantity = sum(tx_in.resolved.value.get(own_policy, {}).values())
+        if quantity > 0:
+            stt_input = tx_in
+            break
+    assert stt_input is not None, "STT input not found"
+
+    input_datum: int = resolve_datum_unsafe(stt_input.resolved, tx_info)
+
+    stt_output: Optional[TxOut] = None
+    for tx_out in tx_info.outputs:
+        quantity = sum(tx_out.value.get(own_policy, {}).values())
+        if quantity > 0:
+            stt_output = tx_out
+            break
+    assert stt_output is not None, "STT must be forwarded"
+    assert stt_input.resolved.address == stt_output.address, "STT address mismatch"
+
+    output_datum: int = resolve_datum_unsafe(stt_output, tx_info)
+    assert output_datum == input_datum + 1, "Counter must increment by one"
+```
+
+Here is the part of the validator that ensures every transaction increments the value of the counter:
+
+- We check if the transaction is signed by the operator.
+- We recover the minting policy identifier from the spending input so we can locate the STT.
+- We check if an input NFT exists and has a datum with an integer.
+- We check if an output exists and has a datum with an integer.
+- We check if the output datum equals the input datum + 1.
+
+
+<Callout type="info">
+When compiling the script you can pass the operator public key hash as a parameter (for example via `--force-three-params` in the Opshin CLI). This keeps the key configurable without hard-coding it in the contract.
+</Callout>
+
+## Forwarding Validation & Other Withdrawal Tricks
+
+By enforcing withdrawals from a specific given script, we can effectively
+'forward' the validation to this script being evaluated with the `withdraw`
+script purpose. This is possible in particular because it is always possible to
+withdraw an amount of 0 lovelace.
+
+We can leverage this to allow a script to be owner of one or multiple UTxOs
+themselves locked by a much simpler script. In stead of normally ensuring that
+the owner's PKH is present in the required signatories, we use a small script
+that forward the validation to another single script also present in the
+transaction.
+
+By using this trick in a spending validator, we can reduce the overhead that
+comes from authorizing multiple spending. Indeed, instead of running the same
+bunch of logic multiple times (one for each input), we only run it once for the
+withdrawal script. Since validators have access to the entire transaction as a
+context, regardless of their execution purpose, it is feasible most of the
+time.
+
+This is being used by a number of dApps now in production in order to optimize
+evaluation budgets and reach a higher efficiency.
+
+## Going further
+
+### Anastasia Labs' design patterns
+
+> https://github.com/Anastasia-Labs/design-patterns
+
+A library designed to abstract away some of the more unintuitive and
+lesser-known eUTxO design patterns, making them more accessible to developers.
+
+### Plutonomicon
+
+> https://github.com/Plutonomicon/plutonomicon
+
+A developer-driven guide to the Plutus smart contract platform _in practice_.
+
+<Callout type="info">
+This page is adapted from the [Aiken documentation](https://github.com/aiken-lang/site/blob/main/src/pages/fundamentals/common-design-patterns.mdx), where you can find the same patterns written in aiken.
+</Callout>

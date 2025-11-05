@@ -9,5 +9,10 @@
   "loop_statements": "Loop Statements",
   "functions": "Functions",
   "builtins": "Builtins",
-  "stdlib": "Standard Library"
+  "stdlib": {
+    "title": "Standard Library",
+    "type": "page",
+    "href": "https://opshin.opshin.dev/opshin/std/index.html",
+    "newWindow": true
+  }
 }

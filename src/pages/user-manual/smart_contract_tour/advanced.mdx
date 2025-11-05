@@ -105,18 +105,19 @@ This contract will fail if anything but a PlutusData object with constructor id 
 and two fields, first integer and second bytes, is passed as a datum into the contract.
 
 > Note: Yes, this implies that without the explicit check the contract may pass with whatever
-> type d is, since its field or constructor id are never explicitly accessed.
+> type datum _actually_ is, since its fields or constructor id are never explicitly accessed.
 
 ```python
 from opshin.prelude import *
 from opshin.std.integrity import check_integrity
 
 @dataclass
-class A(PlutusData)
+class SomeDatum(PlutusData)
     CONSTR_ID = 2
     a: int
     b: bytes
 
-def validator(d: A, r: int, c: ScriptContext):
-    check_integrity(d)
+def validator(context: ScriptContext):
+    datum: SomeDatum = own_datum_unsafe(context)
+    check_integrity(datum)
 ```
