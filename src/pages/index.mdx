@@ -256,6 +256,46 @@ export function icon(name, color) {
     margin: 5rem auto;
     flex-direction: column;
   }
+  section#survey-banner {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 103, 180, 0.2);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+  section#survey-banner a p {
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+  }
+  section#survey-banner p {
+    color: var(--color-text);
+  }
+  section#survey-banner a {
+    background: var(--color-border);
+    color: var(--color-text);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+  }
+  section#survey-banner a:visited {
+    color: #ffffff !important;
+  }
+  section#survey-banner a:hover {
+    opacity: 0.8;
+  }
+  html.light section#survey-banner {
+    background: rgba(0, 103, 180, 0.15);
+  }
   main article + article {
     margin-top: 5rem;
   }
@@ -329,6 +369,17 @@ export function icon(name, color) {
       max-width: 100vw;
       padding: 0 2rem;
       margin: 3rem auto;
+    }
+    section#survey-banner {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+    section#survey-banner a {
+      width: 100%;
+      max-width: 240px;
+      text-align: center;
     }
   }
   @media(max-width: 700px) {
@@ -550,6 +601,13 @@ src/week05/tests/test_lecture.py ...         `, {language: "bash"}).value;
 
 
 <link rel="stylesheet" href="/css/highlightjs-theme.css"/>
+<section id="survey-banner">
+  <p><strong>Help shape OpShin for Plutus v3.</strong> Take our short survey to share your needs.</p>
+  <a href="https://listenlabs.ai/s/opshin-plutusv3?ref=website" target="_blank" rel="noreferrer">
+    Share your feedback
+  </a>
+</section>
+
 <header id="landing">
   <h1 style={{marginTop:"20%"}}>Build without limits</h1>
   <nav>
