@@ -6,7 +6,6 @@
   "migration_v3": "Migrating to PlutusV3",
   "common_design_patterns": "Common Design Patterns",
   "advanced": "Advanced Topics",
-  "what_i_wish_i_knew": "What I Wish I Knew",
   "ledger_def": {
     "title": "Ledger Definitions",
     "type": "page",
