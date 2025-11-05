@@ -90,7 +90,8 @@ const config: DocsThemeConfig = {
           <ul>
             <li><a href="https://github.com/OpShin/opshin-starter-kit">Starter Kit</a></li>
             <li><a href="https://github.com/OpShin/opshin-pioneer-program">Pioneer Program</a></li>
-            <li><a href="https://opshin.opshin.dev/opshin/">Docs</a></li>
+            <li><a href="/user-manual">User Documentation</a></li>
+            <li><a href="https://opshin.opshin.dev/opshin/">API Docs</a></li>
           </ul>
         </nav>
         <nav>
@@ -99,7 +100,6 @@ const config: DocsThemeConfig = {
             <li><a href="https://discord.com/invite/umR3A2g4uw">Discord</a></li>
             <li><a href="https://twitter.com/OpShinDev">Twitter</a></li>
             <li><a href="https://github.com/OpShin">GitHub</a></li>
-            <li><a href="https://patreon.com/OpShin">Patreon</a></li>
           </ul>
         </nav>
         <nav>
