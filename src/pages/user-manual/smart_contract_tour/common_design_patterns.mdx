@@ -432,7 +432,7 @@ Here is the part of the validator that ensures every transaction increments the 
 
 
 <Callout type="info">
-When compiling the script you can pass the operator public key hash as a parameter (for example via `--force-three-params` in the Opshin CLI). This keeps the key configurable without hard-coding it in the contract.
+When compiling the script you can pass the operator public key hash as a parameter (for example via `{"bytes": "<pubkeyhash>"}` in the Opshin CLI). This keeps the key configurable without hard-coding it in the contract.
 </Callout>
 
 ## Forwarding Validation & Other Withdrawal Tricks
@@ -455,7 +455,7 @@ withdrawal script. Since validators have access to the entire transaction as a
 context, regardless of their execution purpose, it is feasible most of the
 time.
 
-This is being used by a number of dApps now in production in order to optimize
+This is being used by a number of DApps now in production in order to optimize
 evaluation budgets and reach a higher efficiency.
 
 ## Going further
@@ -473,6 +473,12 @@ lesser-known eUTxO design patterns, making them more accessible to developers.
 
 A developer-driven guide to the Plutus smart contract platform _in practice_.
 
+### OpShin Example Contracts
+
+> https://github.com/OpShin/opshin/tree/main/examples/smart_contracts
+
+A number of concrete example smart contracts written in OpShin.
+
 <Callout type="info">
-This page is adapted from the [Aiken documentation](https://github.com/aiken-lang/site/blob/main/src/pages/fundamentals/common-design-patterns.mdx), where you can find the same patterns written in aiken.
+This page is adapted from the [Aiken documentation](https://github.com/aiken-lang/site/blob/main/src/pages/fundamentals/common-design-patterns.mdx), where you can find the same patterns written in Aiken.
 </Callout>
