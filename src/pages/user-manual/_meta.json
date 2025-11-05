@@ -1,0 +1,13 @@
+{
+  "index": "Introduction",
+  "getting_started": "Getting Started",
+  "eutxo_crash_course": "Understanding EUTXO",
+  "language_tour": {
+    "title": "Language Tour"
+  },
+  "smart_contract_tour": {
+    "title": "Smart Contract Tour"
+  },
+  "common_issues": "Common Issues",
+  "additional_resources": "Additional Resources"
+}

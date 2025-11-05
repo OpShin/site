@@ -35,8 +35,7 @@ const config: DocsThemeConfig = {
     link: "https://discord.com/invite/umR3A2g4uw",
   },
   search: {
-    component: null,
-    placeholder: "",
+    placeholder: "Search the docs...",
     emptyResult: null,
     error: "",
     loading: null,

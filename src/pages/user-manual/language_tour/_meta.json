@@ -1,0 +1,13 @@
+{
+  "index": "Overview",
+  "structure": "Structure",
+  "primitive_types": "Primitive Types",
+  "container_types": "Container Types",
+  "classes": "Classes",
+  "variables": "Variables",
+  "conditional_statements": "Conditional Statements",
+  "loop_statements": "Loop Statements",
+  "functions": "Functions",
+  "builtins": "Builtins",
+  "stdlib": "Standard Library"
+}

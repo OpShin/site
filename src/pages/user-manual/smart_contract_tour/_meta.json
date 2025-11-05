@@ -1,0 +1,10 @@
+{
+  "index": "Overview",
+  "validator_scripts": "Validator Scripts",
+  "the_scriptcontext": "The ScriptContext",
+  "handling_time": "Handling Time",
+  "migration_v3": "Migrating to PlutusV3",
+  "advanced": "Advanced Topics",
+  "ledger_def": "Ledger Definitions",
+  "examples": "Examples"
+}

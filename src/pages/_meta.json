@@ -10,7 +10,7 @@
   "user-manual": {
     "title": "Documentation",
     "type": "page",
-    "href": "https://book.opshin.dev"
+    "href": "/user-manual/introduction"
   },
   "playground": {
     "title": "Playground",
